@@ -37,11 +37,13 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 clean: 
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(MLX_DIR) clean
+	rm -f $(SRCS_DIR)/*.o
 	rm -f *.o
 
 fclean:	clean
+	$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re:	fclean all
