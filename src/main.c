@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/13 03:54:13 by ktunchar         ###   ########.fr       */
+/*   Created: 2023/08/13 03:55:15 by ktunchar          #+#    #+#             */
+/*   Updated: 2023/08/13 03:55:30 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "../include/minirt.h"
 
-# include "../lib/libft/libft.h"
-# include "../lib/mlx/mlx.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-
-#endif
+int	main()
+{
+	printf("hello\n");
+}

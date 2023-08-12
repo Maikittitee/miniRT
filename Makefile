@@ -1,32 +1,23 @@
-NAME	:= fdf
+NAME	:= minirt
 
-CC	:= gcc
+CC	:= cc
 CFLAGS	:= -Wall -Wextra -Werror
 
-LIB_DIR	:= ./lib
+LIB_DIR	:= ./lib/
 
-SRCS_DIR = src
+SRCS_DIR = src/
 
-SRCS_FILE	:=	fdf.c \
-			fdf_utils.c \
-			fdf_map_data.c \
-			fdf_draw.c \
-			fdf_assign.c \
-			fdf_rotate.c \
-			fdf_initial.c \
-			fdf_key.c \
-			fdf_err.c \
-			fdf_check_read.c
+SRCS_FILE	:= main.c
 
 SRCS := $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 
 OBJS	:= $(SRCS:.c=.o)
 
-LIBFT_DIR	:= $(LIB_DIR)/libft
-LIBFT	:= $(LIBFT_DIR)/libft.a
+LIBFT_DIR	:= $(LIB_DIR)libft/
+LIBFT	:= $(LIBFT_DIR)libft.a
 
-MLX_DIR	:= ./mlx
-MINILIBX	:= $(MLX_DIR)/libmlx.a
+MLX_DIR	:= $(addprefix $(LIB_DIR), mlx/)
+MINILIBX	:= $(MLX_DIR)libmlx.a
 
 FRAME_W	:= -framework OpenGL -framework AppKit
 
@@ -37,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(MINILIBX) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(MINILIBX) -I$(LIBFT_DIR)\
-		-L$(LIBFT_DIR) -Lmlx -lft -lmlx $(FRAME_W) -o $(NAME)
+		-L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx $(FRAME_W) -o $(NAME)
 
 $(MINILIBX):
 	$(MAKE) -C $(MLX_DIR)
