@@ -6,15 +6,16 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 22:23:20 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/14 22:24:50 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:36:30 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-t_data *init_data(void)
+t_data *init_data(char *filename)
 {
 	t_data *data;
+	(void)filename;
 
 	data = malloc(sizeof(t_data));
 	data->mlx = mlx_init();
