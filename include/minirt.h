@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/14 22:26:32 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:35:32 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_data{
 } t_data;
 
 // init and readfile
-t_data *init_data(void);
+t_data *init_data(char *filename);
 
 
 // event handling
