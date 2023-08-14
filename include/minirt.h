@@ -6,18 +6,21 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/14 02:48:56 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:19:57 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# define WIN_WIDTH 900
+# define WIN_HEIGHT 600
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+
 
 typedef struct s_color{
 	unsigned char r;
@@ -73,6 +76,13 @@ typedef struct s_cylin{
 	float	h;
 }t_cylin;
 
+typedef struct s_img{
+	int	pixel_bits;
+	int	line_bytes;
+	int	endian;
+}t_img;
+
+
 typedef struct s_data{
 	t_light		**light;
 	t_sphere	**sphere;
@@ -80,6 +90,13 @@ typedef struct s_data{
 	t_cylin		**cylin;
 	t_cam		cam;
 	t_amb		amb;
+	void		*mlx;
+	void		*win;
+	void		*img;
 } t_data;
+
+
+int     close_win(t_data *data);
+int     ft_exit(int keycode, t_data *data);
 
 #endif
