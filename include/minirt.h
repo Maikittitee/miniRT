@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/14 22:19:57 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:26:32 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,13 @@ typedef struct s_data{
 	void		*img;
 } t_data;
 
+// init and readfile
+t_data *init_data(void);
 
+
+// event handling
 int     close_win(t_data *data);
 int     ft_exit(int keycode, t_data *data);
+
 
 #endif
