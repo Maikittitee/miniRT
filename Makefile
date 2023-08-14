@@ -7,7 +7,8 @@ LIB_DIR	:= ./lib/
 
 SRCS_DIR = src/
 
-SRCS_FILE	:= main.c
+SRCS_FILE	:= main.c \
+				event.c
 
 SRCS := $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 
