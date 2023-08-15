@@ -9,7 +9,8 @@ SRCS_DIR = src/
 
 SRCS_FILE	:= main.c \
 				event.c\
-				init.c
+				init.c\
+				img.c
 
 SRCS := $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 

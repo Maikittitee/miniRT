@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/14 22:35:32 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:09:45 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ t_data *init_data(char *filename);
 // event handling
 int     close_win(t_data *data);
 int     ft_exit(int keycode, t_data *data);
-
+void	my_put_to_img(char *buffer, t_img img, t_pnt pnt, t_color color);
 
 #endif
