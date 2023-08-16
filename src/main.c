@@ -6,11 +6,32 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:55:15 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/15 16:16:23 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:30:11 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
+
+void	mock_data(t_data *data)
+{
+	data->amb.color = (t_color){255, 255, 255};
+	data->amb.ratio = 0.2;
+	data->cam.pnt = (t_pnt){0,0,0};
+	data->cam.fov = 70;
+	data->cam.normal_vec = (t_vec){1, 0, 0};
+	data->light = malloc(sizeof(t_light *) * 2);
+	data->light[0] = malloc(sizeof(t_light));
+	data->light[0]->pnt = (t_pnt){20, 20, 0};
+	data->light[0]->ratio = 0.5;
+	data->light[1] = NULL;
+	data->sphere = malloc(sizeof(t_sphere *) * 2);
+	data->sphere[0] = malloc(sizeof(t_sphere));
+	data->sphere[0]->color = (t_color){255, 255, 0};
+	data->sphere[0]->pnt = (t_pnt){20, 0, 0};
+	data->sphere[0]->d = 5;
+	
+}
+
 
 int	main(int ac, char **av)
 {
@@ -25,6 +46,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (1);
 	data = init_data(*av);
+	mock_data(data);
 	buffer = mlx_get_data_addr(data->img, &(img.pixel_bits), &(img.line_bytes), &(img.endian));
 	my_put_to_img(buffer, img, (t_pnt){100, 100, 100}, (t_color){255, 0, 0});
 	my_put_to_img(buffer, img, (t_pnt){200, 100, 100}, (t_color){255, 0, 0});
