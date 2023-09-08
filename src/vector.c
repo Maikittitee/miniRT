@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 21:41:43 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/08/16 23:21:28 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:05:35 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ t_vec sub(t_vec u, t_vec v)
 	n.i = v.i - u.i;
 	n.j = v.j - u.j;
 	n.k = v.k - u.k;
+	return (n);
+}
+
+t_vec add(t_vec u, t_vec v)
+{
+	t_vec	n;
+
+	n.i = v.i + u.i;
+	n.j = v.j + u.j;
+	n.k = v.k + u.k;
 	return (n);
 }
 
