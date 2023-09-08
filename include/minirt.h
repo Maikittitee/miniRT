@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/09/08 11:05:57 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:12:56 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef enum e_bool{
 
 // init and readfile
 t_data *init_data(char *filename);
-
+t_bool init_camera(t_cam *cam);
 
 // event handling
 int     close_win(t_data *data);
