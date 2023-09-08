@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/09/07 23:19:19 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:05:57 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_cam{
 	t_pnt	pnt;
 	t_vec	normal_vec;
 	t_axis	axis;
+	t_vec	ray_dir;
 } t_cam;
 
 typedef struct t_ray{
@@ -129,6 +130,7 @@ void	my_put_to_img(char *buffer, t_img img, t_pnt pnt, t_color color);
 float   dot_product(t_vec u, t_vec v);
 t_vec cross_product(t_vec u, t_vec v);
 t_vec sub(t_vec u, t_vec v);
+t_vec add(t_vec u, t_vec v);
 t_vec cmultiply(t_vec u, float c);
 float vec_size(t_vec u);
 t_vec normalize(t_vec u);
