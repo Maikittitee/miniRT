@@ -12,7 +12,9 @@ SRCS_FILE	:= main.c \
 				init.c\
 				img.c\
 				vector.c\
-				render.c
+				render.c\
+				cam.c\
+			
 
 SRCS := $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 

@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:55:15 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/09/07 23:13:18 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:38:34 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	main(int ac, char **av)
 	mock_data(data);
 	init_camera(&(data->cam));
 	buffer = mlx_get_data_addr(data->img, &(img.pixel_bits), &(img.line_bytes), &(img.endian));
+	ray_tracer(data, buffer, img);
 
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	mlx_hook(data->win, 17, 0, close_win, data);
 	mlx_hook(data->win, 2, 1, ft_exit, data);
 	mlx_loop(data->mlx);

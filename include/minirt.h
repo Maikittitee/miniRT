@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/09/08 11:12:56 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:31:03 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ t_bool init_camera(t_cam *cam);
 int     close_win(t_data *data);
 int     ft_exit(int keycode, t_data *data);
 void	my_put_to_img(char *buffer, t_img img, t_pnt pnt, t_color color);
+t_bool	ray_tracer(t_data *data, char *buffer, t_img img);
 
 
 //vector
