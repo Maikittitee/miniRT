@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 22:58:19 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/09/11 18:35:48 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:39:39 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_bool init_camera(t_cam *cam)
 	cam->ray_dir = cam->axis.dir;
 	cam->ray_dir = add(cam->ray_dir, cmultiply(cam->axis.vert, 0.5 * cam->ver_height));
 	cam->ray_dir = sub(cam->ray_dir, cmultiply(cam->axis.hori, 0.5 * cam->ver_width));
-
 	return (True);
 		
 }
