@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/09/11 18:31:03 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:50:09 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,24 +116,8 @@ typedef enum e_bool{
 	True
 }t_bool;
 
-// init and readfile
-t_data *init_data(char *filename);
-t_bool init_camera(t_cam *cam);
+t_bool render(void *img, int width, int height);
+int	get_color(int x, int y);
 
-// event handling
-int     close_win(t_data *data);
-int     ft_exit(int keycode, t_data *data);
-void	my_put_to_img(char *buffer, t_img img, t_pnt pnt, t_color color);
-t_bool	ray_tracer(t_data *data, char *buffer, t_img img);
-
-
-//vector
-float   dot_product(t_vec u, t_vec v);
-t_vec cross_product(t_vec u, t_vec v);
-t_vec sub(t_vec u, t_vec v);
-t_vec add(t_vec u, t_vec v);
-t_vec cmultiply(t_vec u, float c);
-float vec_size(t_vec u);
-t_vec normalize(t_vec u);
 
 #endif
