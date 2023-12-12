@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/07 18:21:29 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/13 00:15:31 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,10 @@
 
 t_bool render(void *img, int width, int height)
 {
-	// int	x;
-	// int	y;
-	
 	int pixel_bits;
 	int line_bytes;
 	int endian;
 	char *buffer = mlx_get_data_addr(img, &pixel_bits, &line_bytes, &endian);
-
-	// x = 0;
-	// y = 0;
-	// while (y < height)
-	// {
-	// 	while (x < width)
-	// 	{
-	// 		buffer[x * 4 + y * line_bytes] = get_color(x, y);
-	// 		x++;
-	// 	}
-	// 	y++;
-
-	// }
-
-// if (pixel_bits != 32)
-//     color = mlx_get_color_value(mlx, color);
 
 for(int y = 0; y < height; ++y)
 for(int x = 0; x < width; ++x)
@@ -59,10 +40,10 @@ int	get_color(int x, int y)
 	(void)y;
 
 
-
-	char r = floor(x* 255.0);
-	char g = floor(y * 255.0);
-	char b = 0x00;
+	char r = x * 255.0 / WIN_WIDTH;
+	char b= y * 255.0 / WIN_HEIGHT;
+	// char g = (y) * 255.0 / sqrt(WIN_HEIGHT * WIN_HEIGHT + WIN_WIDTH * WIN_WIDTH);
+	char g = 0x00;
 
 	int color = (((char)r << 16) & (0xFF0000)) | (((char)g << 8) & (0x00FF00)) | (b & (0x0000FF));
 
