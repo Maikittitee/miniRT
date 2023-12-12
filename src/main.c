@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/07 16:44:45 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/13 00:09:14 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
     void *mlx = mlx_init();
-    void *win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "Tutorial Window - Create Image");
+    void *win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
 
     void *image = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
     
