@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/07 18:16:47 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:21:29 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ for(int x = 0; x < width; ++x)
 	int color = get_color(x, y);
     int pixel = (y * line_bytes) + (x * 4);
 
-        buffer[pixel + 3] = (color >> 24); // alpha
-        buffer[pixel + 2] = (color >> 16) & 0xFF; //red
-        buffer[pixel + 1] = (color >> 8) & 0xFF; // green
-        buffer[pixel] = (color) & 0xFF; //blue
+	// buffer[pixel] = color;
+	buffer[pixel + 3] = (color >> 24); // alpha
+	buffer[pixel + 2] = (color >> 16) & 0xFF; //red
+	buffer[pixel + 1] = (color >> 8) & 0xFF; // green
+	buffer[pixel] = (color) & 0xFF; //blue
 }
 	return (True);
 }
