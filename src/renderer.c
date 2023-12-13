@@ -6,31 +6,44 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/13 00:15:31 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/13 23:22:30 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-t_bool render(void *img, int width, int height)
-{
-	int pixel_bits;
-	int line_bytes;
-	int endian;
-	char *buffer = mlx_get_data_addr(img, &pixel_bits, &line_bytes, &endian);
-
-for(int y = 0; y < height; ++y)
-for(int x = 0; x < width; ++x)
+void	put_color_to_img(char **buffer, t_img *img, int x, int y)
 {
 	int color = get_color(x, y);
-    int pixel = (y * line_bytes) + (x * 4);
+    int pixel = (y * img->line_bytes) + (x * 4);
 
 	// buffer[pixel] = color;
-	buffer[pixel + 3] = (color >> 24); // alpha
-	buffer[pixel + 2] = (color >> 16) & 0xFF; //red
-	buffer[pixel + 1] = (color >> 8) & 0xFF; // green
-	buffer[pixel] = (color) & 0xFF; //blue
+	(*buffer)[pixel + 3] = (color >> 24); // alpha
+	(*buffer)[pixel + 2] = (color >> 16) & 0xFF; //red
+	(*buffer)[pixel + 1] = (color >> 8) & 0xFF; // green
+	(*buffer)[pixel] = (color) & 0xFF; //blue
 }
+	
+
+t_bool render(t_data *data)
+{
+	char *buffer;
+	t_img img;
+	int	x;
+	int y;
+
+	y = 0;
+	buffer = mlx_get_data_addr(data->imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
+	while (y < WIN_HEIGHT)
+	{
+		x = 0;
+		while  (x < WIN_WIDTH)
+		{
+			put_color_to_img(&buffer, &img, x, y);
+			x++;
+		}
+		y++;
+	}
 	return (True);
 }
 
