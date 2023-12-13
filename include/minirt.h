@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/07 16:50:09 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/13 23:09:09 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ typedef struct s_data{
 	t_cylin		**cylin;
 	t_cam		cam;
 	t_amb		amb;
-	void		*mlx;
-	void		*win;
-	void		*img;
+	void		*mlxp;
+	void		*winp;
+	void		*imgp;
 } t_data;
 
 typedef enum e_bool{
@@ -116,7 +116,7 @@ typedef enum e_bool{
 	True
 }t_bool;
 
-t_bool render(void *img, int width, int height);
+t_bool render(t_data *data, int width, int height);
 int	get_color(int x, int y);
 
 
