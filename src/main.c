@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/13 23:09:43 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/17 03:42:18 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@ int main()
 	data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
     data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT); 
 
-	render(&data, WIN_WIDTH, WIN_HEIGHT);
-    // The following code goes here
 
+	// initial data 
+
+	// passing object
+
+	// rendering 
+	render(&data, WIN_WIDTH, WIN_HEIGHT);
 	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
 
+	// loop	
     mlx_loop(mlx);
 }
