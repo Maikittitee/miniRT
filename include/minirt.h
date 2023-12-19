@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/17 03:40:08 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:46:06 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ typedef enum e_bool{
 	True
 }t_bool;
 
-t_bool render(t_data *data, int width, int height);
+t_bool render(t_data *data);
 int	get_color(int x, int y);
 
 t_vec vector_add(t_vec a, t_vec b);
@@ -125,4 +125,6 @@ float vector_dot(t_vec a, t_vec b);
 t_vec vector_cross(t_vec a, t_vec b);
 float vector_size(t_vec u);
 t_vec vector_norm(t_vec u);
+
+t_vec xy_to_vec(int x, int y);
 #endif

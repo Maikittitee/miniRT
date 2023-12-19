@@ -8,7 +8,9 @@ LIB_DIR	:= ./lib/
 SRCS_DIR = src/
 
 SRCS_FILE	:= main.c \
-				renderer.c
+				renderer.c \
+				pnt.c \
+				math.c
 	
 			
 
