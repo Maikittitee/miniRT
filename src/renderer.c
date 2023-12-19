@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/13 23:22:30 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:12:35 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,45 @@ t_bool render(t_data *data)
 
 int	get_color(int x, int y)
 {
-	(void)x;
-	(void)y;
+	int i;
+	int j;
 
+	i = x - WIN_WIDTH / 2;
+	j = y - WIN_HEIGHT / 2;
+	
+	// printf("%d %d\n", i, j);
+	t_vec origin;
+	origin.i = 0;
+	origin.j = 0;
+	origin.k = 2;
+	
+	t_vec direction;
+	direction.i = i;
+	direction.j = j;
+	direction.k = -1;
+	direction = vector_norm(direction);
 
-	char r = x * 255.0 / WIN_WIDTH;
-	char b= y * 255.0 / WIN_HEIGHT;
-	// char g = (y) * 255.0 / sqrt(WIN_HEIGHT * WIN_HEIGHT + WIN_WIDTH * WIN_WIDTH);
-	char g = 0x00;
+	float a =  vector_dot(direction, direction);
+	float b = 2 * vector_dot(origin, direction);
+	float c = vector_dot(origin, origin) - 3.999555;
 
-	int color = (((char)r << 16) & (0xFF0000)) | (((char)g << 8) & (0x00FF00)) | (b & (0x0000FF));
+	// printf("%f %f %f\n", a,b,c);
 
-	printf("%x\n", color);
-	return (color);
-	// return ((r << 16) | (g << 8) | (b));
-	// return (0xABCDEF);	
-	return (0xFF0000);
+	float discm; 
+
+	discm = b * b - 4 * a * c;
+
+	printf("(%d,%d) discm=%f\n", i, j, discm);
+	if (discm >= 0)
+		return (0xFF0000);
+	return (0x000000);
+	
+
+	
+	
+	// int color = (((char)r << 16) & (0xFF0000)) | (((char)g << 8) & (0x00FF00)) | (b & (0x0000FF));
+
+	// printf("%x\n", color);
+	// return (color);
 	
 }
