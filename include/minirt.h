@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/19 16:46:06 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/28 02:12:07 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,8 @@ typedef struct s_color{
 	unsigned char r;
 	unsigned char g;
 	unsigned char b;
+	unsigned char a;
 } t_color;
-
-typedef struct s_pnt{
-	float	x;
-	float	y;
-	float	z;
-} t_pnt;
 
 typedef struct s_vec{
 	float	i;
@@ -56,37 +51,37 @@ typedef struct s_cam{
 	int 	fov;
 	float	ver_height;
 	float	ver_width;
-	t_pnt	pnt;
+	t_vec	ori;
 	t_vec	normal_vec;
 	t_axis	axis;
 	t_vec	ray_dir;
 } t_cam;
 
 typedef struct t_ray{
-	t_pnt	pnt;
-	t_vec	vec;
+	t_vec	ori;
+	t_vec	dir;
 } t_ray;
 
 typedef struct s_light{
 	float ratio;
-	t_pnt pnt;
+	t_vec ori;
 } t_light;
 
 typedef struct s_sphere{
 	t_color color;
-	t_pnt	pnt;
+	t_vec	ori;
 	float	d;	
 } t_sphere;
 
 typedef	struct s_plane{
 	t_color color;
-	t_pnt	pnt;
+	t_vec	ori;
 	t_vec	normal_vec;
 } t_plane;
 
 typedef struct s_cylin{
 	t_color	color;
-	t_pnt	pnt;
+	t_vec	ori;
 	t_vec	normal_vec;
 	float	d;
 	float	h;
@@ -116,8 +111,7 @@ typedef enum e_bool{
 	True
 }t_bool;
 
-t_bool render(t_data *data);
-int	get_color(int x, int y);
+t_bool render(t_data *data, t_img *img, char **buffer);
 
 t_vec vector_add(t_vec a, t_vec b);
 t_vec vector_sub(t_vec a, t_vec b);
@@ -126,5 +120,7 @@ t_vec vector_cross(t_vec a, t_vec b);
 float vector_size(t_vec u);
 t_vec vector_norm(t_vec u);
 
-t_vec xy_to_vec(int x, int y);
+t_color	per_pixel(int x, int y);
+void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
+
 #endif
