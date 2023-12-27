@@ -10,7 +10,8 @@ SRCS_DIR = src/
 SRCS_FILE	:= main.c \
 				renderer.c \
 				pnt.c \
-				math.c
+				math.c \
+				img.c
 	
 			
 
