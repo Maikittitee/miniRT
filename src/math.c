@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 03:10:52 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/17 04:20:32 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:51:07 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,10 @@ t_vec vector_norm(t_vec u)
 	ret.k = u.k / size;
 	
 	return (ret);	
+}
+
+t_vec c_vec(float c, t_vec u)
+{
+	return ((t_vec){c * u.i, c * u.j, c * u.k});
 }
 
