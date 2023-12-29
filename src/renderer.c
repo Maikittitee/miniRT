@@ -6,19 +6,12 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/30 02:14:38 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 04:35:52 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-
-float minf(float a, float b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
 
 t_bool render(t_data *data, t_img *img, char **buffer)
 {
@@ -46,18 +39,7 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 	return (True);
 }
 
-t_color colorf(float n)
-{
-	t_color ret;
 
-	ret.a = (unsigned char)n << 24 & 0xFF;
-	ret.b = (unsigned char)n << 16 & 0xFF;
-	ret.g = (unsigned char)n << 8 & 0xFF;
-	ret.r = (unsigned char)n & 0xFF;
-
-	return (ret);
-	
-}
 
 t_color	per_pixel(int x, int y)
 {
@@ -75,23 +57,24 @@ t_color	per_pixel(int x, int y)
 
 	// get color from float
 	
-	float aspect_ratio = WIN_WIDTH/WIN_HEIGHT;
+	// float aspect_ratio = WIN_WIDTH/WIN_HEIGHT;
 	
-	i *= aspect_ratio;
+	// i *= aspect_ratio;
 	t_vec origin;
 	origin.i = 0;
 	origin.j = 0;
-	origin.k = 4.000055555;
+	origin.k = -100.000055555;
+	// origin = vector_norm(origin);
 	
 	t_vec direction;
 	direction.i = i;
 	direction.j = j;
-	direction.k = -1;
+	direction.k = 1;
 	direction = vector_norm(direction);
 
 	float a =  vector_dot(direction, direction);
 	float b = 2 * vector_dot(origin, direction);
-	float c = vector_dot(origin, origin) - 16;
+	float c = vector_dot(origin, origin) - 10000;
 
 
 	float discm; 
@@ -100,20 +83,21 @@ t_color	per_pixel(int x, int y)
 	if (discm < 0)
 		return ((t_color){0, 0, 0, 1});
 	// return ((t_color){255, 0, 255, 1});
-
+	// printf("%d\n", (unsigned char)(-0.5 * 255));
+	// return ((t_color){-0.5 * 255, 0, 0, 255});
 	float t1, t2;
 
-	t1 = ((-1 * b) + discm) / 2 * a;
-	t2 = ((-1 * b) - discm) / 2 * a;
+	t1 = ((-1 * b) + sqrt(discm)) / (2 * a);
+	t2 = ((-1 * b) - sqrt(discm)) / (2 * a);
 
-	t_vec hit_point = c_vec(minf(t1, t2), direction);
+	t_vec hit_point = vector_add(origin, c_vec(fminf(t1, t2), direction));
 
 
 	// go to light
 
 	t_light light;
 
-	light.ori =  (t_vec){-5, 5, 0};
+	light.ori =  (t_vec){-100, -100, -100};
 	light.ratio = 1;
 	
 	t_vec hp_to_light, o_to_hp;
@@ -121,11 +105,15 @@ t_color	per_pixel(int x, int y)
 	o_to_hp = vector_norm(vector_sub(hit_point, (t_vec){0,0,0}));
 	hp_to_light = vector_norm(vector_sub(light.ori, hit_point));
 
-	float dot_p = vector_dot(o_to_hp, hp_to_light);
+	float dot_p;
+	// dot_p = fmaxf(vector_dot(o_to_hp, hp_to_light), 0.0f);
+	dot_p = vector_dot(o_to_hp, hp_to_light);
+	if (dot_p < 0)
+		return ((t_color){0, 0, 0, 255});
 	
-	printf("dot product result:%f\n", dot_p); 
+	printf("(%d, %d)dot product result:%f, color:%f\n",x, y, dot_p, dot_p * 255.0f); 
 
 	
-	return ((t_color){dot_p * 255, 0, 0 , 1});
+	return ((t_color){(dot_p * 0.5 + 0.5) * 255, 0, 0 , 255});
 
 }

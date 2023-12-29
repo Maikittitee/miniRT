@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 01:28:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/30 01:35:58 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 04:32:23 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color)
 {	
 	int pixel = (pnt.j * img.line_bytes) + (pnt.i * 4);
-	// printf("color: %d %d %d\n", color.r, color.g, color.b);
+	printf("color: %d %d %d\n", color.r, color.g, color.b);
 	if (img.endian == 1)        // Most significant (Alpha) byte first
 	{
 		buffer[pixel + 0] = (1);
