@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/30 04:35:52 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 04:52:32 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ t_color	per_pixel(int x, int y)
 	printf("(%d, %d)dot product result:%f, color:%f\n",x, y, dot_p, dot_p * 255.0f); 
 
 	
-	return ((t_color){(dot_p * 0.5 + 0.5) * 255, 0, 0 , 255});
+	return ((t_color){(dot_p) * 255, 0, 0 , 255});
 
 }
