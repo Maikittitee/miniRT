@@ -6,11 +6,29 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/28 01:32:57 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:35:12 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
+
+void	mock_data(t_data *data)
+{
+	t_sphere sphere;
+
+	sphere.color = (t_color){255, 0, 255, 255};
+	sphere.d = 4;
+	sphere.ori = (t_vec){0, 0, 0};
+
+	t_obj *obj;
+
+	obj = malloc(sizeof(t_obj));
+	obj->obj = &sphere;
+	obj->type = SPHERE;
+	obj->next = NULL;
+
+	data->obj = obj;
+}
 
 int main()
 {
@@ -26,8 +44,10 @@ int main()
 
 	// initial data
 	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
-
+	mock_data(&data);
 	// passing object
+
+	printf("Type of obj: %d\n",(data.obj)->type);
 
 	// rendering 
 	render(&data, &img, &buffer);

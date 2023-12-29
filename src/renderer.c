@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/28 03:48:28 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 02:14:38 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ t_color	per_pixel(int x, int y)
 
 	// get color from float
 	
-	// printf("%d %d\n", i, j);
+	float aspect_ratio = WIN_WIDTH/WIN_HEIGHT;
+	
+	i *= aspect_ratio;
 	t_vec origin;
 	origin.i = 0;
 	origin.j = 0;
-	origin.k = 2;
+	origin.k = 4.000055555;
 	
 	t_vec direction;
 	direction.i = i;
@@ -89,37 +91,41 @@ t_color	per_pixel(int x, int y)
 
 	float a =  vector_dot(direction, direction);
 	float b = 2 * vector_dot(origin, direction);
-	float c = vector_dot(origin, origin) - 3.999555;
+	float c = vector_dot(origin, origin) - 16;
 
-	// printf("%f %f %f\n", a,b,c);
 
 	float discm; 
-
 	discm = b * b - 4 * a * c;
 
-	// printf("(%d,%d) discm=%f\n", i, j, discm);
-
 	if (discm < 0)
-		return ((t_color){0, 0, 0, 0});
+		return ((t_color){0, 0, 0, 1});
+	// return ((t_color){255, 0, 255, 1});
 
 	float t1, t2;
 
 	t1 = ((-1 * b) + discm) / 2 * a;
 	t2 = ((-1 * b) - discm) / 2 * a;
-	
 
-	float t_min = minf(t1, t2);
+	t_vec hit_point = c_vec(minf(t1, t2), direction);
 
-	printf("%f\n", t_min);
 
-	// t_color color = (t_color){t_min * 255, 0, 0, 0};
-	return (colorf(t_min));
+	// go to light
+
+	t_light light;
+
+	light.ori =  (t_vec){-5, 5, 0};
+	light.ratio = 1;
 	
+	t_vec hp_to_light, o_to_hp;
+
+	o_to_hp = vector_norm(vector_sub(hit_point, (t_vec){0,0,0}));
+	hp_to_light = vector_norm(vector_sub(light.ori, hit_point));
+
+	float dot_p = vector_dot(o_to_hp, hp_to_light);
+	
+	printf("dot product result:%f\n", dot_p); 
 
 	
-	
-	// int color = (((char)r << 16) & (0xFF0000)) | (((char)g << 8) & (0x00FF00)) | (b & (0x0000FF));
+	return ((t_color){dot_p * 255, 0, 0 , 1});
 
-	// printf("%x\n", color);
-	
 }

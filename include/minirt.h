@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/28 02:12:07 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:51:16 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,26 @@ typedef struct s_img{
 	int	endian;
 }t_img;
 
+typedef enum e_type{
+	SPHERE, 
+	PLANE,
+	CYLIN
+}t_type;
+
+typedef struct s_obj{
+	void *obj;
+	t_type type;
+	struct s_obj *next;
+} t_obj;
 
 typedef struct s_data{
 	t_light		**light;
-	t_sphere	**sphere;
-	t_plane		**plane;
-	t_cylin		**cylin;
 	t_cam		cam;
 	t_amb		amb;
 	void		*mlxp;
 	void		*winp;
 	void		*imgp;
+	t_obj		*obj;
 } t_data;
 
 typedef enum e_bool{
@@ -119,6 +128,7 @@ float vector_dot(t_vec a, t_vec b);
 t_vec vector_cross(t_vec a, t_vec b);
 float vector_size(t_vec u);
 t_vec vector_norm(t_vec u);
+t_vec c_vec(float c, t_vec u);
 
 t_color	per_pixel(int x, int y);
 void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
