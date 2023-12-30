@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/30 04:52:32 by ktunchar         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:57:57 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_color	per_pixel(int x, int y)
 	t_vec origin;
 	origin.i = 0;
 	origin.j = 0;
-	origin.k = -100.000055555;
+	origin.k = -4.00005555;
 	// origin = vector_norm(origin);
 	
 	t_vec direction;
@@ -74,7 +74,7 @@ t_color	per_pixel(int x, int y)
 
 	float a =  vector_dot(direction, direction);
 	float b = 2 * vector_dot(origin, direction);
-	float c = vector_dot(origin, origin) - 10000;
+	float c = vector_dot(origin, origin) - 16;
 
 
 	float discm; 
@@ -91,7 +91,7 @@ t_color	per_pixel(int x, int y)
 	t2 = ((-1 * b) - sqrt(discm)) / (2 * a);
 
 	t_vec hit_point = vector_add(origin, c_vec(fminf(t1, t2), direction));
-
+	printf("hit point is (%f %f %f)\n", hit_point.i, hit_point.j, hit_point.k);
 
 	// go to light
 
@@ -102,16 +102,22 @@ t_color	per_pixel(int x, int y)
 	
 	t_vec hp_to_light, o_to_hp;
 
-	o_to_hp = vector_norm(vector_sub(hit_point, (t_vec){0,0,0}));
+	t_vec circle_origin;
+
+	circle_origin.i = 0;
+	circle_origin.j = 0;
+	circle_origin.k = 0;
+	o_to_hp = vector_norm(vector_sub(hit_point, circle_origin));
 	hp_to_light = vector_norm(vector_sub(light.ori, hit_point));
 
+	printf("and its normal vector is (%f %f %f)\n", o_to_hp.i, o_to_hp.j, o_to_hp.k);
 	float dot_p;
 	// dot_p = fmaxf(vector_dot(o_to_hp, hp_to_light), 0.0f);
-	dot_p = vector_dot(o_to_hp, hp_to_light);
-	if (dot_p < 0)
-		return ((t_color){0, 0, 0, 255});
+	dot_p = fmaxf(vector_dot(o_to_hp, hp_to_light), 0.0f);
+	// if (dot_p < 0)
+	// 	return ((t_color){0, 0, 0, 255});
 	
-	printf("(%d, %d)dot product result:%f, color:%f\n",x, y, dot_p, dot_p * 255.0f); 
+	// printf("(%d, %d)dot product result:%f, color:%f\n",x, y, dot_p, dot_p * 255.0f); 
 
 	
 	return ((t_color){(dot_p) * 255, 0, 0 , 255});
