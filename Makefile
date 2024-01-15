@@ -5,21 +5,23 @@ CFLAGS	:= -Wall -Wextra -Werror
 
 LIB_DIR	:= ./lib/
 
-SRCS_DIR = src/
+RENDER_DIR = src/render/
 
-SRCS_FILE	:= main.c \
+RENDER_FILE	:= main.c \
 				renderer.c \
 				pnt.c \
 				math.c \
 				img.c
-	
-			
 
-SRCS := $(addprefix $(SRCS_DIR), $(SRCS_FILE))
+# PARSER_DIR = src/parser/
+
+# PARSER_FILE	:= main.c \
+
+SRCS := $(addprefix $(RENDER_DIR), $(RENDER_FILE))
 
 OBJS	:= $(SRCS:.c=.o)
 
-LIBFT_DIR	:= $(LIB_DIR)libft/
+LIBFT_DIR	:= $(LIB_DIR)libft_gnl
 LIBFT	:= $(LIBFT_DIR)libft.a
 
 MLX_DIR	:= $(addprefix $(LIB_DIR), mlx/)
@@ -42,10 +44,11 @@ $(MINILIBX):
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-clean: 
+clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(MLX_DIR) clean
-	rm -f $(SRCS_DIR)/*.o
+	rm -f $(PARSER_DIR)/*.o
+	rm -f $(RENDER_DIR)/*.o
 	rm -f *.o
 
 fclean:	clean

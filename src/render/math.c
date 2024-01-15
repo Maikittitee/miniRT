@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 03:10:52 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/30 01:51:07 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:00:47 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../include/minirt.h"
 
 t_vec vector_add(t_vec a, t_vec b)
 {
@@ -19,7 +19,7 @@ t_vec vector_add(t_vec a, t_vec b)
 	ret.i = a.i + b.i;
 	ret.j = a.j + b.j;
 	ret.k = a.k + b.k;
-	
+
 	return (ret);
 }
 
@@ -30,7 +30,7 @@ t_vec vector_sub(t_vec a, t_vec b)
 	ret.i = a.i - b.i;
 	ret.j = a.j - b.j;
 	ret.k = a.k - b.k;
-	
+
 	return (ret);
 }
 
@@ -68,8 +68,8 @@ t_vec vector_norm(t_vec u)
 	ret.i = u.i / size;
 	ret.j = u.j / size;
 	ret.k = u.k / size;
-	
-	return (ret);	
+
+	return (ret);
 }
 
 t_vec c_vec(float c, t_vec u)
