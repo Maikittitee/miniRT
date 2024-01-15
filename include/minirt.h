@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/30 01:51:16 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:56:20 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
-# include "../lib/libft/libft.h"
+# include "../lib/libft_gnl/libft.h"
 # include "../lib/mlx/mlx.h"
 # include <stdio.h>
 # include <unistd.h>
@@ -70,7 +70,7 @@ typedef struct s_light{
 typedef struct s_sphere{
 	t_color color;
 	t_vec	ori;
-	float	d;	
+	float	d;
 } t_sphere;
 
 typedef	struct s_plane{
@@ -94,7 +94,7 @@ typedef struct s_img{
 }t_img;
 
 typedef enum e_type{
-	SPHERE, 
+	SPHERE,
 	PLANE,
 	CYLIN
 }t_type;

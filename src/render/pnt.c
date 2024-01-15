@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pnt.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:07:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2023/12/19 16:02:57 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:00:55 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../include/minirt.h"
+
 
 t_vec xy_to_vec(int x, int y)
 {
@@ -21,5 +22,5 @@ t_vec xy_to_vec(int x, int y)
 	ret.k = 0;
 
 	return (ret);
-	
+
 }
