@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 03:10:52 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/15 16:00:47 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:32:49 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_vec vector_norm(t_vec u)
 	return (ret);
 }
 
-t_vec c_vec(float c, t_vec u)
+t_vec vector_scaler(float c, t_vec u)
 {
 	return ((t_vec){c * u.i, c * u.j, c * u.k});
 }
