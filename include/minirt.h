@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/26 16:15:25 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:54:33 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
+# define PI 3.14159265358979
 # include "../lib/libft_gnl/libft.h"
 # include "../lib/mlx/mlx.h"
 # include <stdio.h>
