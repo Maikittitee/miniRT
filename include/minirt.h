@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/15 15:56:20 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:15:25 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ typedef struct s_axis{
 
 typedef struct s_cam{
 	int 	fov;
-	float	ver_height;
-	float	ver_width;
 	t_vec	ori;
 	t_vec	normal_vec;
-	t_axis	axis;
 	t_vec	ray_dir;
+	
+	float	ver_height;
+	float	ver_width;
+	t_axis	axis;
 } t_cam;
 
 typedef struct t_ray{
@@ -106,7 +107,7 @@ typedef struct s_obj{
 } t_obj;
 
 typedef struct s_data{
-	t_light		**light;
+	t_light		*light;
 	t_cam		cam;
 	t_amb		amb;
 	void		*mlxp;
