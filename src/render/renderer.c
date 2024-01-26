@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/26 18:55:54 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:56:15 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_camera(t_cam *cam)
 	
 	cam->axis.vert = (t_vec){0, 1.0f, 0};
 	cam->axis.hori = vector_cross(cam->axis.vert, cam->ray_dir);
-	cam->ver_width = 2* tan(cam->fov * PI / 360)
+	cam->ver_width = 2* tan(cam->fov * PI / 360);
 	cam->ver_height = WIN_HEIGHT/WIN_WIDTH * cam->ver_width;
 	
 	
