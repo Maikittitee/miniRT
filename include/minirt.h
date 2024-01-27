@@ -120,7 +120,7 @@ typedef struct s_obj{
 } t_obj;
 
 typedef struct s_data{
-	t_light		**light;
+	t_light		*light;
 	t_cam		cam;
 	t_amb		amb;
 	void		*mlxp;

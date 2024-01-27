@@ -33,6 +33,7 @@ void	ft_add_ambient(t_data *data, char **sp_line, int *mode)
 	char	**sp;
 
 	i = 1;
+	printf(GRN"Hello ambient\n"RESET);
 	while(sp_line[i])
 	{
 		if(sp_line[1])
@@ -75,20 +76,30 @@ int	ft_add_camera(t_data *data, char **sp_line, int *mode)
 	*mode = FOUND;
 	return(0);
 }
+
 int	ft_add_sphere(t_data *data, char **sp_line, int *mode)
 {
+	char **sp;
+	(void)data;
+
 	if (ft_cnt2d(sp_line) != 4)
 		return(printf("Error file\n"));
-	// if ()
-
-
+	sp = ft_split(sp_line[1], ',');
+	if (ft_cnt2d(sp) != 3)
+		return(printf("Error file\n"));
+	// assign value
+	ft_doublefree(sp);
+	// ft_print2d(sp);
+	*mode = FOUND;
+	return(0);
 }
+
 t_data	*ft_addvalue(char *file, t_data *data)
 {
-	char *line;
+	char 	*line;
 	char	**sp_line;
-	int	fd;
-	int	mode;
+	int		fd;
+	int		mode;
 
 	mode = 0;
 	fd = open(file, O_RDONLY);
@@ -103,17 +114,20 @@ t_data	*ft_addvalue(char *file, t_data *data)
 		if(line[0] != '\n')
 		{
 			sp_line = ft_split(line, ' ');
-			if (sp_line[0][0] == 'A')
+			if (ft_strcmp(sp_line[0], "A") == 0)
 				ft_add_ambient(data, sp_line, &mode);
-			if (sp_line[0][0] == 'C')
+			if (ft_strcmp(sp_line[0], "C") == 0)
 				ft_add_camera(data, sp_line, &mode);
-			if (sp_line[0][0] == 's' && sp_line[0][1] == 'p')
-				ft_add_camera(data, sp_line, &mode);
-			ft_printmain(data);
-			// return(0);
+			if (ft_strcmp(sp_line[0], "sp") == 0)
+				ft_add_sphere(data, sp_line, &mode);
+			// if (ft_strcmp(sp_line[0], "pl") == 0)
+			// if (ft_strcmp(sp_line[0], "cy") == 0)
+			// ft_printmain(data);
 
+			// check duplicate variable
 			ft_doublefree(sp_line);
 		}
 		free(line);
 	}
+	
 }

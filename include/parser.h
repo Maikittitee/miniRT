@@ -15,6 +15,7 @@
 
 typedef struct s_data		t_data;
 // check file
+int		ft_strcmp(char *str1, char *str2);
 int	ft_checkfile(char *file, t_data *data);
 int	ft_checkextension(char *file);
 
