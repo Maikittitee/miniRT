@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/26 20:28:35 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/29 00:36:06 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,49 @@ typedef struct s_color{
 } t_color;
 
 typedef struct s_vec{
-	float	i;
-	float	j;
-	float	k;
+	float	x;
+	float	y;
+	float	z;
 } t_vec;
 
-typedef struct s_amb{
-	float	ratio;
-	t_color	color;
-} t_amb;
+// typedef struct s_amb{
+// 	float	ratio;
+// 	t_color	color;
+// } t_amb;
 
 typedef struct s_axis{
-	t_vec	dir;
-	t_vec	vert;
-	t_vec	hori;
+	t_vec	x;
+	t_vec	y;
+	t_vec	z;
 } t_axis;
 
 typedef struct s_cam{
 	int 	fov;
-	t_vec	ori;
-	t_vec	normal_vec;
-	t_vec	dir;
+	t_vec	origin;
+	// t_vec	normal_vec;
+	t_vec	direction;
 	
-	float	ver_height;
-	float	ver_width;
-	t_axis	axis;
 } t_cam;
+
+typedef struct s_viewport{
+	float width;
+	float height;
+	t_vec step_x;
+	t_vec step_y;
+	t_vec origin;
+	t_axis axis;
+	t_vec width_vec;
+	t_vec height_vec;
+	t_vec upper_left_px;
+} t_viewport;
 
 typedef struct t_ray{
 	t_vec	ori;
 	t_vec	dir;
 } t_ray;
 
+
+ // --------------------------
 typedef struct s_light{
 	float ratio;
 	t_vec ori;
@@ -131,6 +142,7 @@ t_vec vector_cross(t_vec a, t_vec b);
 float vector_size(t_vec u);
 t_vec vector_norm(t_vec u);
 t_vec vector_scaler(float c, t_vec u);
+t_vec vector_div(t_vec u, t_vec v);
 
 t_color	per_pixel(t_ray ray, t_obj *obj);
 void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
