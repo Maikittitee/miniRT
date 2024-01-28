@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kztunchar <kztunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 03:10:52 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/26 19:32:49 by ktunchar         ###   ########.fr       */
+/*   Created: 2023/12/15 03:10:52 by ztunchar          #+#    #+#             */
+/*   Updated: 2024/01/29 00:23:52 by kztunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_vec vector_add(t_vec a, t_vec b)
 {
 	t_vec ret;
 
-	ret.i = a.i + b.i;
-	ret.j = a.j + b.j;
-	ret.k = a.k + b.k;
+	ret.x = a.x + b.x;
+	ret.y = a.y + b.y;
+	ret.z = a.z + b.z;
 
 	return (ret);
 }
@@ -27,9 +27,9 @@ t_vec vector_sub(t_vec a, t_vec b)
 {
 	t_vec ret;
 
-	ret.i = a.i - b.i;
-	ret.j = a.j - b.j;
-	ret.k = a.k - b.k;
+	ret.x = a.x - b.x;
+	ret.y = a.y - b.y;
+	ret.z = a.z - b.z;
 
 	return (ret);
 }
@@ -38,7 +38,7 @@ float vector_dot(t_vec a, t_vec b)
 {
 	float result;
 
-	result = a.i * b.i + a.j * b.j + a.k * b.k;
+	result = a.x * b.x + a.y * b.y + a.z * b.z;
 
 	return (result);
 }
@@ -47,16 +47,16 @@ t_vec vector_cross(t_vec a, t_vec b)
 {
 	t_vec ret;
 
-	ret.i = +(a.j * b.k - a.k * b.j);
-	ret.j = -(a.i * b.k - a.k * b.i);
-	ret.k = +(a.i * b.j -  a.j * b.i);
+	ret.x = +(a.y * b.z - a.z * b.y);
+	ret.y = -(a.x * b.z - a.z * b.x);
+	ret.z = +(a.x * b.y -  a.y * b.x);
 
 	return (ret);
 }
 
 float vector_size(t_vec u)
 {
-	return (sqrt(u.i * u.i + u.j * u.j + u.k * u.k ));
+	return (sqrt(u.x * u.x + u.y * u.y + u.z * u.z ));
 }
 
 t_vec vector_norm(t_vec u)
@@ -65,15 +65,25 @@ t_vec vector_norm(t_vec u)
 	float size;
 
 	size = vector_size(u);
-	ret.i = u.i / size;
-	ret.j = u.j / size;
-	ret.k = u.k / size;
+	ret.x = u.x / size;
+	ret.y = u.y / size;
+	ret.z = u.z / size;
 
 	return (ret);
 }
 
+t_vec vector_div(t_vec u, t_vec v)
+{
+	return ((t_vec){u.x/v.x, u.y/v.y, u.z/v.z});
+}
+
 t_vec vector_scaler(float c, t_vec u)
 {
-	return ((t_vec){c * u.i, c * u.j, c * u.k});
+	return ((t_vec){c * u.x, c * u.y, c * u.z});
+}
+
+void	print_vec(t_vec u)
+{
+	printf("<%f %f %f>\n", u.x, u.y, u.z);
 }
 
