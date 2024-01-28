@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/29 00:53:44 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/29 01:04:44 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ int	main()
 	cam.direction = (t_vec){0, 1, 0};
 	cam.fov = 70;
 	cam.origin = (t_vec){0, 0, 0};
+
+	init_viewport(&viewport, &cam);
+
+	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
+	printf("origin\n");
+	print_vec(viewport.origin);
+	printf("step x,y\n");
+	print_vec(viewport.step_x);
+	print_vec(viewport.step_y);
+	printf("first pixel\n");
+	print_vec(viewport.upper_left_px);
+	printf("x y z\n");
+	print_vec(viewport.axis.x);
+	print_vec(viewport.axis.y);
+	print_vec(viewport.axis.z);
+	
+	
 	
 }
 

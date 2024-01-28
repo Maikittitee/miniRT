@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/29 00:50:19 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/29 01:06:16 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 {
 	// char *buffer;
 	// t_img img;
-	t_ray ray;
-	t_color color;
+	// t_ray ray;
+	// t_color color;
 	int	x;
 	int y;
-
+	(void)buffer;
+	(void)data;
+	(void)img;
 	y = 0;
 	// init_camera(&data->cam)
 	while (y < WIN_HEIGHT)
@@ -46,9 +48,9 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 		while  (x < WIN_WIDTH)
 		{
 			// ray = gen_ray(x, y, data);
-			color = per_pixel(ray, data->obj); // color = per_pixel(ray);
+			// color = per_pixel(ray, data->obj); // color = per_pixel(ray);
 			// put_color_to_img(per_pixel(x, y),buffer, img, (t_vec){x, y, 0});
-			my_put_to_img(*buffer, *img, (t_vec){x, y, 0}, color);
+			// my_put_to_img(*buffer, *img, (t_vec){x, y, 0}, color);
 			x++;
 		}
 		y++;
@@ -62,7 +64,7 @@ t_color	per_pixel(t_ray ray, t_obj *obj)
 {
 	(void)obj;
 	(void)ray;
-	printf("%f %f %f\n", ray.dir.i, ray.dir.j, ray.dir.k);
+	// printf("%f %f %f\n", ray.dir.i, ray.dir.j, ray.dir.k);
 	return (t_color){255, 0, 255, 255};
 	
 
