@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/29 00:36:06 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/29 01:05:02 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ typedef struct s_vec{
 	float	z;
 } t_vec;
 
-// typedef struct s_amb{
-// 	float	ratio;
-// 	t_color	color;
-// } t_amb;
+typedef struct s_amb{
+	float	ratio;
+	t_color	color;
+} t_amb;
 
 typedef struct s_axis{
 	t_vec	x;
@@ -144,7 +144,12 @@ t_vec vector_norm(t_vec u);
 t_vec vector_scaler(float c, t_vec u);
 t_vec vector_div(t_vec u, t_vec v);
 
+t_bool	init_viewport(t_viewport *viewport, t_cam *cam);
+
+
 t_color	per_pixel(t_ray ray, t_obj *obj);
 void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
+
+void	print_vec(t_vec u);
 
 #endif

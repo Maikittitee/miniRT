@@ -9,9 +9,9 @@ RENDER_DIR = src/render/
 
 RENDER_FILE	:= main.c \
 				renderer.c \
-				pnt.c \
 				math.c \
-				img.c
+				img.c \
+				viewport.c
 
 # PARSER_DIR = src/parser/
 
