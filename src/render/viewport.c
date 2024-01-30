@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:23:13 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/30 13:03:33 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/31 02:39:39 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ t_bool	init_viewport(t_viewport *viewport, t_cam *cam)
 
 	viewport->width_vec = viewport_u;	
 	viewport->height_vec = viewport_v;	
-	viewport->step_x = vector_scaler(1.0f/ viewport->width , viewport_u);
-	viewport->step_y = vector_scaler(1.0f/ viewport->height , viewport_v);
+	viewport->step_x = vector_scaler((float)(1.0f/ WIN_WIDTH) , viewport_u);
+	viewport->step_y = vector_scaler((float)(1.0f/ WIN_HEIGHT) , viewport_v);
 	
 	first_pixel = vector_add(cam->origin, (t_vec){0, 0, -1});
 	first_pixel = vector_add(first_pixel, vector_scaler(-0.5f, viewport_u));
 	first_pixel = vector_add(first_pixel, vector_scaler(-0.5f, viewport_v));
 	
-	
+	// don't use axis
 	viewport->axis = calculate_axis(vector_norm(cam->direction)); // x is right , y is up, -z is direction
 	// viewport->width_vec = vector_scaler(viewport->width, viewport->axis.x);
 	// viewport->height_vec = vector_scaler(viewport->height, viewport->axis.y);
