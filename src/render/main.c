@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/29 01:04:44 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:07:17 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int	main()
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
 	printf("origin\n");
 	print_vec(viewport.origin);
+	printf("width vec / height vec\n");
+	print_vec(viewport.width_vec);
+	print_vec(viewport.height_vec);
 	printf("step x,y\n");
 	print_vec(viewport.step_x);
 	print_vec(viewport.step_y);
