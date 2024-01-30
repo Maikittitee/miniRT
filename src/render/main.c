@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/29 14:07:17 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/31 02:51:28 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	mock_data(t_data *data)
 int	main()
 {
 	t_viewport viewport;
+	t_data	data;
+
 
 	t_cam	cam;
 
@@ -41,6 +43,7 @@ int	main()
 	cam.origin = (t_vec){0, 0, 0};
 
 	init_viewport(&viewport, &cam);
+
 
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
 	printf("origin\n");
@@ -53,10 +56,14 @@ int	main()
 	print_vec(viewport.step_y);
 	printf("first pixel\n");
 	print_vec(viewport.upper_left_px);
-	printf("x y z\n");
-	print_vec(viewport.axis.x);
-	print_vec(viewport.axis.y);
-	print_vec(viewport.axis.z);
+	// printf("x y z\n");
+	// print_vec(viewport.axis.x);
+	// print_vec(viewport.axis.y);
+	// print_vec(viewport.axis.z);
+
+	data.viewport = viewport; // check : can assign 
+
+	render(&data, NULL, NULL);
 	
 	
 	

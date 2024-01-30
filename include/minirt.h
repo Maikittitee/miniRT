@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/29 14:14:15 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/31 02:41:48 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct s_data{
 	void		*winp;
 	void		*imgp;
 	t_obj		*obj;
+	t_viewport viewport;
 } t_data;
 
 typedef enum e_bool{

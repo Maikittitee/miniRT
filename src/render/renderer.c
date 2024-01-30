@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/29 01:06:16 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/31 02:50:50 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,28 @@
 	
 // }
 
+t_ray	gen_ray(int x, int y, t_data *data)
+{
+	t_vec dir;
+	t_vec origin;
+	t_vec target_px;
+	
+	target_px = vector_add(data->viewport.upper_left_px, vector_scaler(x, data->viewport.step_x));
+	target_px = vector_add(target_px, vector_scaler(y, data->viewport.step_y));
+	print_vec(target_px);
+	origin = data->cam.origin;
+	dir  = vector_sub(target_px, origin);
+	return (t_ray){origin, dir};
+	
+}
+
 t_bool render(t_data *data, t_img *img, char **buffer)
 {
 	// char *buffer;
 	// t_img img;
-	// t_ray ray;
+	t_ray ray;
 	// t_color color;
+	(void)ray;
 	int	x;
 	int y;
 	(void)buffer;
@@ -47,7 +63,7 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 		x = 0;
 		while  (x < WIN_WIDTH)
 		{
-			// ray = gen_ray(x, y, data);
+			ray = gen_ray(x, y, data);
 			// color = per_pixel(ray, data->obj); // color = per_pixel(ray);
 			// put_color_to_img(per_pixel(x, y),buffer, img, (t_vec){x, y, 0});
 			// my_put_to_img(*buffer, *img, (t_vec){x, y, 0}, color);
