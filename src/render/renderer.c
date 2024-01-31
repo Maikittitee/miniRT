@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/31 02:50:50 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:05:45 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 	// char *buffer;
 	// t_img img;
 	t_ray ray;
-	// t_color color;
+	t_color color;
 	(void)ray;
 	int	x;
+	(void) color;
 	int y;
 	(void)buffer;
 	(void)data;
@@ -64,9 +65,8 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 		while  (x < WIN_WIDTH)
 		{
 			ray = gen_ray(x, y, data);
-			// color = per_pixel(ray, data->obj); // color = per_pixel(ray);
-			// put_color_to_img(per_pixel(x, y),buffer, img, (t_vec){x, y, 0});
-			// my_put_to_img(*buffer, *img, (t_vec){x, y, 0}, color);
+			color = per_pixel(ray, data->obj); // color = per_pixel(ray);
+			my_put_to_img(*buffer, *img, (t_vec){x, y, 0}, color);
 			x++;
 		}
 		y++;
@@ -80,8 +80,17 @@ t_color	per_pixel(t_ray ray, t_obj *obj)
 {
 	(void)obj;
 	(void)ray;
+
+	t_vec unit_dir;
+
+	unit_dir = vector_norm(ray.dir);
+	float a = 0.5f * (unit_dir.y + 1.0f);
+	
+	return (t_color){(1-0.5 * a)*255, (1-0.3 * a)*255, 1 * 255, 255};
+	// return (t_color){255, 255, 255, 255}
+	
+	
 	// printf("%f %f %f\n", ray.dir.i, ray.dir.j, ray.dir.k);
-	return (t_color){255, 0, 255, 255};
 	
 
 }
