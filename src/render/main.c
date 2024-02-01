@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/01 00:35:29 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/02 02:46:56 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	main()
 	cam.origin = (t_vec){0, 0, 0};
 
 	init_viewport(&viewport, &cam);
+	data.cam = cam;
 
+	print_vec(cam.origin);
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
 	printf("origin\n");
 	print_vec(viewport.origin);
@@ -41,6 +43,7 @@ int	main()
 	// print_vec(viewport.axis.x);
 	// print_vec(viewport.axis.y);
 	// print_vec(viewport.axis.z);
+	print_vec(cam.origin);
 
 	data.viewport = viewport; // check : can assign 
 
@@ -65,6 +68,7 @@ int	main()
 	render(&data, &img, &buffer);
 	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
 
+	print_vec(data.cam.origin);
 	// loop
     mlx_loop(mlx);	
 }

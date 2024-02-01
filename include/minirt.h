@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/01 00:31:55 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/02 02:25:06 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_vec{
 } t_vec;
 
 typedef struct s_amb{
-	float	ratio;
 	t_color	color;
+	float	ratio;
 } t_amb;
 
 typedef struct s_axis{
@@ -49,10 +49,10 @@ typedef struct s_axis{
 } t_axis;
 
 typedef struct s_cam{
-	int 	fov;
 	t_vec	origin;
 	// t_vec	normal_vec;
 	t_vec	direction;
+	int 	fov;
 	
 } t_cam;
 
@@ -123,6 +123,8 @@ typedef struct s_obj{
 } t_obj;
 
 typedef struct s_data{
+	t_obj		*obj;
+	t_viewport	viewport;
 	t_light		*light;
 	t_cam		cam;
 	t_amb		amb;
@@ -130,8 +132,6 @@ typedef struct s_data{
 	void		*winp;
 	void		*imgp;
 	unsigned int nobj;
-	t_obj		*obj;
-	t_viewport	viewport;
 } t_data;
 
 typedef enum e_bool{
