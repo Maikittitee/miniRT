@@ -11,7 +11,8 @@ RENDER_FILE	:= main.c \
 				renderer.c \
 				math.c \
 				img.c \
-				viewport.c
+				viewport.c\
+				sphere.c
 
 # PARSER_DIR = src/parser/
 

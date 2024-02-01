@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/31 20:05:45 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:42:38 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_ray	gen_ray(int x, int y, t_data *data)
 	
 	target_px = vector_add(data->viewport.upper_left_px, vector_scaler(x, data->viewport.step_x));
 	target_px = vector_add(target_px, vector_scaler(y, data->viewport.step_y));
-	print_vec(target_px);
+	// print_vec(target_px);
 	origin = data->cam.origin;
 	dir  = vector_sub(target_px, origin);
 	return (t_ray){origin, dir};
@@ -83,11 +83,17 @@ t_color	per_pixel(t_ray ray, t_obj *obj)
 
 	t_vec unit_dir;
 
-	unit_dir = vector_norm(ray.dir);
-	float a = 0.5f * (unit_dir.y + 1.0f);
+	unit_dir = vector_norm(ray.dir); 
+	float a = 0.5f * (unit_dir.y + 1.0f); // use y as parameter 
+	if (!hit_sphere(ray, obj[0]))
+		return (t_color){(1 - 0.5 * a) * 255, (1 - 0.3 * a) * 255, 255, 255};
+	float t = hit_sphere_t(ray, obj[0]);
+	t_vec hitpoint = vector_add(ray.ori, vector_scaler(t, vector_norm(ray.dir)));
+	t_vec sp_normal_vec = vector_norm(vector_sub(hitpoint, obj[0].ori));
+	return (t_color){((float)((sp_normal_vec.x + 1) * 0.5f)) * 255, ((float)((sp_normal_vec.y + 1) * 0.5f)) * 255, ((float)((sp_normal_vec.z + 1) * 0.5f)) * 255, 255};
 	
-	return (t_color){(1-0.5 * a)*255, (1-0.3 * a)*255, 1 * 255, 255};
-	// return (t_color){255, 255, 255, 255}
+	
+	// return (t_color){(1 - a) * 255, (1-a) * 255, (1-a) * 255, 255};
 	
 	
 	// printf("%f %f %f\n", ray.dir.i, ray.dir.j, ray.dir.k);

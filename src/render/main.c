@@ -6,42 +6,11 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/31 19:36:28 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/01 00:35:29 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
-
-void	mock_data(t_data *data)
-{
-	t_sphere sphere;
-
-	sphere.color = (t_color){255, 0, 255, 255};
-	sphere.d = 4;
-	sphere.ori = (t_vec){0, 0, 0};
-
-	t_obj *obj;
-
-	obj = malloc(sizeof(t_obj));
-	obj->obj = &sphere;
-	obj->type = SPHERE;
-	obj->next = NULL;
-
-	data->obj = obj;
-
-
-//  t_data data;
-// 	t_img img;
-// 	char *buffer;
-
-// 	mlx = mlx_init();
-// 	data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
-//     data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-
-
-// 	// initial data
-// 	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
-}
 
 int	main()
 {
@@ -56,7 +25,6 @@ int	main()
 	cam.origin = (t_vec){0, 0, 0};
 
 	init_viewport(&viewport, &cam);
-
 
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
 	printf("origin\n");
@@ -85,39 +53,19 @@ int	main()
 	data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
     data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
+	
+	data.nobj = 1;
+	data.obj = malloc(sizeof(t_obj) * data.nobj);
+	data.obj[0].type = SPHERE;
+	data.obj[0].color = (t_color){255, 0, 0, 255};
+	data.obj[0].ori = (t_vec){0, 0, -10};
+	data.obj[0].d = 15;
+	
 	// rendering
 	render(&data, &img, &buffer);
 	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
 
 	// loop
     mlx_loop(mlx);	
-	
 }
 
-
-// int main()
-// {
-//     void *mlx;
-//     t_data data;
-// 	t_img img;
-// 	char *buffer;
-
-// 	mlx = mlx_init();
-// 	data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
-//     data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-
-
-// 	// initial data
-// 	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
-// 	mock_data(&data);
-// 	// passing object
-
-// 	printf("Type of obj: %d\n",(data.obj)->type);
-
-// 	// rendering
-// 	render(&data, &img, &buffer);
-// 	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
-
-// 	// loop
-//     mlx_loop(mlx);
-// }

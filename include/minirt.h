@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/31 02:41:48 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/01 00:31:55 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,13 @@ typedef enum e_type{
 }t_type;
 
 typedef struct s_obj{
-	void *obj;
 	t_type type;
-	struct s_obj *next;
+	t_color	color;
+	t_vec	ori;
+	t_vec	normal_vec;
+	float	d;
+	float	h;
+	
 } t_obj;
 
 typedef struct s_data{
@@ -125,8 +129,9 @@ typedef struct s_data{
 	void		*mlxp;
 	void		*winp;
 	void		*imgp;
+	unsigned int nobj;
 	t_obj		*obj;
-	t_viewport viewport;
+	t_viewport	viewport;
 } t_data;
 
 typedef enum e_bool{
@@ -153,4 +158,6 @@ void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
 
 void	print_vec(t_vec u);
 
+float hit_sphere_t(t_ray ray,t_obj sphere);
+t_bool	hit_sphere(t_ray ray, t_obj sphere);
 #endif
