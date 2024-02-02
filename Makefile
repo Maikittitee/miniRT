@@ -19,6 +19,9 @@ PARSER_FILE	:= checkfile.c \
 				ft_addvalue.c \
 				ft_cal.c \
 				ft_print.c \
+				ft_cnt.c \
+				ft_obj.c \
+
 
 SRCS := $(addprefix $(RENDER_DIR), $(RENDER_FILE)) \
 		$(addprefix $(PARSER_DIR), $(PARSER_FILE))

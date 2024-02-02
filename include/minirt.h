@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/26 09:11:10 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:18:13 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ typedef enum e_type{
 typedef struct s_obj{
 	void *obj;
 	t_type type;
-	struct s_obj *next;
+	// struct s_obj *next;
 } t_obj;
 
 typedef struct s_data{
@@ -127,6 +127,7 @@ typedef struct s_data{
 	void		*winp;
 	void		*imgp;
 	t_obj		*obj;
+
 } t_data;
 
 typedef enum e_bool{

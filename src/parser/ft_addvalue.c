@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:30:04 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/01/26 17:08:34 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/01/31 02:21:11 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_add_ambient(t_data *data, char **sp_line, int *mode)
 		// protect i > 3
 		return;
 	}
-	*mode = 1;
+	*mode = FOUND;
 }
 
 int	ft_add_camera(t_data *data, char **sp_line, int *mode)
@@ -77,20 +77,31 @@ int	ft_add_camera(t_data *data, char **sp_line, int *mode)
 	return(0);
 }
 
-int	ft_add_sphere(t_data *data, char **sp_line, int *mode)
+t_sphere	*ft_add_sphere(t_data *data, char **sp_line)
 {
 	char **sp;
 	(void)data;
+	// sp 0.0,0.0,20.6 12.6 10,0,255
+	// identifier: sp
+	// ∗ x,y,z coordinates of the sphere center: 0.0,0.0,20.6
+	// ∗ the sphere diameter: 12.6
+	// ∗ R,G,B colors in range [0-255]: 10, 0, 255
 
 	if (ft_cnt2d(sp_line) != 4)
-		return(printf("Error file\n"));
+	{
+		printf("Error file\n");
+		return(0);	
+	}
 	sp = ft_split(sp_line[1], ',');
 	if (ft_cnt2d(sp) != 3)
-		return(printf("Error file\n"));
+	{
+		printf("Error file\n");
+		return(0);
+	}			
+
 	// assign value
 	ft_doublefree(sp);
 	// ft_print2d(sp);
-	*mode = FOUND;
 	return(0);
 }
 
@@ -100,12 +111,14 @@ t_data	*ft_addvalue(char *file, t_data *data)
 	char	**sp_line;
 	int		fd;
 	int		mode;
+	int		cnt_obj;
 
 	mode = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return(0);
-	printf("fd : %d\n", fd);
+	// printf("fd : %d\n", fd);
+	cnt_obj = ft_cnt_obj(file);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -118,8 +131,10 @@ t_data	*ft_addvalue(char *file, t_data *data)
 				ft_add_ambient(data, sp_line, &mode);
 			if (ft_strcmp(sp_line[0], "C") == 0)
 				ft_add_camera(data, sp_line, &mode);
-			if (ft_strcmp(sp_line[0], "sp") == 0)
-				ft_add_sphere(data, sp_line, &mode);
+			if(ft_checkobj(sp_line[0]) == FOUND)
+				ft_assign_obj(cnt_obj, data, sp_line);
+			// if (ft_strcmp(sp_line[0], "sp") == 0)
+				// ft_add_sphere(data, sp_line, &mode);
 			// if (ft_strcmp(sp_line[0], "pl") == 0)
 			// if (ft_strcmp(sp_line[0], "cy") == 0)
 			// ft_printmain(data);
@@ -129,5 +144,46 @@ t_data	*ft_addvalue(char *file, t_data *data)
 		}
 		free(line);
 	}
-	
+}
+
+
+int ft_cnt_obj(char *file)
+{
+	int		fd;
+	char	*line;
+	char	**sp_line;
+	int		cnt;
+		
+	fd = open(file , O_RDONLY);
+	if (fd == -1)
+		return(0);
+	cnt = 0;
+	while(1)
+	{
+		line = get_next_line(fd);
+		// if(!line && cnt > 0) // fixed cnt = 0 (It mean malloc don't have obj)
+		if(!line) // fixed cnt = 0 (It mean malloc don't have obj)
+		{			
+			// printf("cnt__ : %d\n", cnt);
+			close(fd);
+			return(cnt);
+		}
+		// check ambient 
+		if (line[0] != '\n')
+		{
+			// printf("Entry\n");
+			sp_line = ft_split(line, ' ');
+			// printf("sp_line : %s\n", sp_line[0]);
+			if (ft_strcmp(sp_line[0], "cy") == 0 || ft_strcmp(sp_line[0], "sp") == 0 || ft_strcmp(sp_line[0], "pl") == 0)
+				cnt = cnt + 1;
+			else if ((ft_strcmp(sp_line[0], "A") == 0) || (ft_strcmp(sp_line[0], "C") == 0) 
+			|| (ft_strcmp(sp_line[0], "L") == 0 ))
+				continue ;
+			else
+				printf("Error file\n");
+			ft_doublefree(sp_line);
+		}
+		free(line);
+	}
+	return(0);
 }

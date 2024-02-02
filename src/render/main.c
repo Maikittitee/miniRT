@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/24 16:10:20 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:57:06 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	mock_data(t_data *data)
 	obj = malloc(sizeof(t_obj));
 	obj->obj = &sphere;
 	obj->type = SPHERE;
-	obj->next = NULL;
+	// obj->next = NULL;
 
 	data->obj = obj;
 }
