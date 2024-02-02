@@ -1,4 +1,7 @@
 minirt
 *.o
 */*.o
+*.a
+*/*.a
+
 .DS_Store
