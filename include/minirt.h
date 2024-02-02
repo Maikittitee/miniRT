@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/02 02:25:06 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:12:27 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ typedef struct s_obj{
 typedef struct s_data{
 	t_obj		*obj;
 	t_viewport	viewport;
-	t_light		*light;
+	t_light		light;
 	t_cam		cam;
 	t_amb		amb;
 	void		*mlxp;
@@ -149,15 +149,19 @@ float vector_size(t_vec u);
 t_vec vector_norm(t_vec u);
 t_vec vector_scaler(float c, t_vec u);
 t_vec vector_div(t_vec u, t_vec v);
+t_color	color_scaler(float c, t_color color);
+t_color	color_add(t_color c1, t_color c2);
 
 t_bool	init_viewport(t_viewport *viewport, t_cam *cam);
 
 
-t_color	per_pixel(t_ray ray, t_obj *obj);
+t_color	per_pixel(t_ray ray, t_obj *obj, t_light light);
 void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
 
 void	print_vec(t_vec u);
 
 float hit_sphere_t(t_ray ray,t_obj sphere);
 t_bool	hit_sphere(t_ray ray, t_obj sphere);
+
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:53:31 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/02 02:43:29 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/02 21:30:18 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_bool	hit_sphere(t_ray ray, t_obj sphere)
 	float c;
 	float discriminant;
 	// print_vec(ray.ori);
-	oc = vector_sub(sphere.ori, ray.ori);
+	oc = vector_sub(ray.ori, sphere.ori);
 	a = vector_dot(ray.dir, ray.dir);
 	b = 2.0f * vector_dot(oc, ray.dir);
 	c = vector_dot(oc, oc) - (sphere.d * sphere.d * 0.25);
@@ -48,7 +48,7 @@ float hit_sphere_t(t_ray ray,t_obj sphere)
 	// print_vec(sphere.ori);
 	// printf("ray ori >>\n");	
 	// print_vec(ray.ori);
-	oc = vector_sub(sphere.ori, ray.ori); // not sure;
+	oc = vector_sub(ray.ori, sphere.ori); // not sure;
 	// printf("oc >>\n");	
 	// print_vec(oc);
     // auto a = dot(r.direction(), r.direction());

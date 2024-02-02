@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/02 02:46:56 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/02 22:06:13 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,26 @@ int	main()
 
 
 	t_cam	cam;
+	t_light light;
 
-	cam.direction = (t_vec){0, 1, 0};
+	cam.direction = (t_vec){0, 0, -1};
 	cam.fov = 70;
 	cam.origin = (t_vec){0, 0, 0};
 
 	init_viewport(&viewport, &cam);
 	data.cam = cam;
 
+
+	light.ori = (t_vec){-10, 10, 5};
+	light.ratio = 1;
+	
+	data.nobj = 1;
+	data.obj = malloc(sizeof(t_obj) * data.nobj);
+	data.obj[0].type = SPHERE;
+	data.obj[0].color = (t_color){255, 0, 0, 255};
+	data.obj[0].ori = (t_vec){0, 0, -10};
+	data.obj[0].d = 10;
+	data.light = light;
 	print_vec(cam.origin);
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
 	printf("origin\n");
@@ -57,12 +69,6 @@ int	main()
     data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
 	
-	data.nobj = 1;
-	data.obj = malloc(sizeof(t_obj) * data.nobj);
-	data.obj[0].type = SPHERE;
-	data.obj[0].color = (t_color){255, 0, 0, 255};
-	data.obj[0].ori = (t_vec){0, 0, -10};
-	data.obj[0].d = 15;
 	
 	// rendering
 	render(&data, &img, &buffer);

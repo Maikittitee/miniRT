@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/02 02:43:54 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/02 21:28:23 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 		while  (x < WIN_WIDTH)
 		{
 			ray = gen_ray(x, y, data);
-			color = per_pixel(ray, data->obj); // color = per_pixel(ray);
+			color = per_pixel(ray, data->obj, data->light); // color = per_pixel(ray);
 			my_put_to_img(*buffer, *img, (t_vec){x, y, 0}, color);
 			x++;
 		}
@@ -82,7 +82,7 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 
 
 
-t_color	per_pixel(t_ray ray, t_obj *obj)
+t_color	per_pixel(t_ray ray, t_obj *obj, t_light light)
 {
 	(void)obj;
 	(void)ray;
@@ -99,6 +99,19 @@ t_color	per_pixel(t_ray ray, t_obj *obj)
 	float t = hit_sphere_t(ray, obj[0]);
 	t_vec hitpoint = vector_add(ray.ori, vector_scaler(t, unit_dir));
 	t_vec sp_normal_vec = vector_norm(vector_sub(hitpoint, obj[0].ori));
+	
+	t_vec hitpoint_to_light = vector_norm(vector_sub(light.ori, hitpoint));
+
+	float dot_p = fmaxf(vector_dot(sp_normal_vec, hitpoint_to_light), 0.0f);
+
+	printf("sphere normal vector\n");
+	print_vec(sp_normal_vec);
+	printf("hitpoint\n");
+	print_vec(hitpoint);
+	printf("hp to light\n");
+	print_vec(hitpoint_to_light);
+	printf("dot: %f\n", dot_p);
+	return (t_color){255 * dot_p, 0, 0, 255};
 	return (t_color){((float)((sp_normal_vec.x + 1) * 0.5f)) * 255, ((float)((sp_normal_vec.y + 1) * 0.5f)) * 255, ((float)((sp_normal_vec.z + 1) * 0.5f)) * 255, 255};
 	
 	

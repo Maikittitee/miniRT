@@ -12,7 +12,8 @@ RENDER_FILE	:= main.c \
 				math.c \
 				img.c \
 				viewport.c\
-				sphere.c
+				sphere.c\
+				color.c
 
 # PARSER_DIR = src/parser/
 
