@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 21:17:26 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/04 00:30:08 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ int	main()
 	light.ori = (t_vec){-10, 10, 5};
 	light.ratio = 1;
 	
-	data.nobj = 1;
+	data.nobj = 2;
 	data.obj = malloc(sizeof(t_obj) * data.nobj);
 	data.obj[0].type = SPHERE;
 	data.obj[0].color = (t_color){255, 0, 0, 255};
-	data.obj[0].ori = (t_vec){0, 0, -10};
+	data.obj[0].ori = (t_vec){5, 0, -10};
 	data.obj[0].d = 10;
+	data.obj[1].type = SPHERE;
+	data.obj[1].color = (t_color){0, 255, 0, 255};
+	data.obj[1].ori = (t_vec){-10, 0, -10};
+	data.obj[1].d = 10;
 	data.light = light;
 	print_vec(cam.origin);
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
