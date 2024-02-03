@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 00:41:21 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 00:03:07 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:53:04 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ t_color	color_scaler(float c, t_color color)
 
 t_color	color_add(t_color c1, t_color c2)
 {
-	return ((t_color){max(c1.r + c2.r, 255), max(c1.g + c2.g, 255), max(c1.b + c2.b, 255), 255});
+	return ((t_color){fmax(c1.r + c2.r, 255), fmax(c1.g + c2.g, 255), fmax(c1.b + c2.b, 255), 255});
 }
