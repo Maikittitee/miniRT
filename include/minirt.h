@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 00:12:27 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:17:43 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,7 @@ void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
 
 void	print_vec(t_vec u);
 
-float hit_sphere_t(t_ray ray,t_obj sphere);
-t_bool	hit_sphere(t_ray ray, t_obj sphere);
+float	hit_sphere(t_ray ray, t_obj sphere);
 
 
 #endif
