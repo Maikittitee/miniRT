@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 18:15:44 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/03 21:17:26 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,23 @@ int	main()
 	data.viewport = viewport; // check : can assign 
 
 
-	// void *mlx;
-	// t_img img;
-	// char *buffer;
+	void *mlx;
+	t_img img;
+	char *buffer;
 
-	// mlx = mlx_init();
-	// data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
-    // data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-	// buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
+	mlx = mlx_init();
+	data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
+    data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
+	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, &img.line_bytes, &img.endian);
 	
 	
-	// // rendering
-	// render(&data, &img, &buffer);
-	// mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
+	// rendering
+	render(&data, &img, &buffer);
+	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
 
-	// print_vec(data.cam.origin);
-	// // loop
-    // mlx_loop(mlx);	
+	print_vec(data.cam.origin);
+	// loop
+    mlx_loop(mlx);	
 	free(data.obj);
 }
 

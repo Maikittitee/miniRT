@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 18:17:43 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/03 21:12:59 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,11 +155,12 @@ t_color	color_add(t_color c1, t_color c2);
 t_bool	init_viewport(t_viewport *viewport, t_cam *cam);
 
 
-t_color	per_pixel(t_ray ray, t_obj *obj, t_light light);
+t_color	per_pixel(t_ray ray, t_obj *obj, t_data data);
 void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
 
 void	print_vec(t_vec u);
 
+t_color hit_object(t_ray ray, t_obj *obj, t_data data);
 float	hit_sphere(t_ray ray, t_obj sphere);
 
 
