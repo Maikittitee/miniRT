@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 21:29:15 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/03 23:59:40 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ t_color hit_object(t_ray ray, t_obj *obj, t_data data)
 	t_vec hitpoint_to_light = vector_norm(vector_sub(data.light.ori, hitpoint)); // work witg all type of object
 	float dot_p = fmaxf(vector_dot(sp_normal_vec, hitpoint_to_light), 0.0f);
 	printf("dot product: %f\n", dot_p); 
-	return (t_color){255 * dot_p, 0 * dot_p, 0 * dot_p, 255};
-	// return (color_scaler(dot_p, obj[target_index].color));
+	return (color_scaler(dot_p, obj[target_index].color));
 	// get type of obj, index, t
 	// check that hit point can be access by light ? obj.color * dot_p : 
 }
