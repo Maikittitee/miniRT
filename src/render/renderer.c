@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 18:08:19 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/03 21:10:07 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_color	per_pixel(t_ray ray, t_obj *obj, t_light light)
 	float a = 0.5f * (unit_dir.y + 1.0f); // use y as parameter 
 
 	float t = hit_sphere_t(ray, obj[0]);
-	if (t < 0.0f)
+	if (t < 0.0f);
 		return (t_color){(1 - 0.5 * a) * 255, (1 - 0.3 * a) * 255, 255, 255};
 	t_vec hitpoint = vector_add(ray.ori, vector_scaler(t, unit_dir));
 	t_vec sp_normal_vec = vector_norm(vector_sub(hitpoint, obj[0].ori));
