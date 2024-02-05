@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:12:57 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/01/31 00:46:42 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:23:31 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_checkextension(char *str)
 	char	*find;
 	int		cmp;
 
-	find = ft_strchr(str, '.');
+	find = ft_strchr(str, '.'); // strchr or strrchr
 	cmp = ft_strcmp(find, ".rt");
 	// printf("cmp : %d\n", cmp);
 	if (cmp != 0)
@@ -36,15 +36,15 @@ int		ft_checkextension(char *str)
 }
 int	ft_checkfile(char *file, t_data *data)
 {
-	int cnt_obj;
+	// int cnt_obj;
 	(void)data;
 
-	cnt_obj = 0;
+	// cnt_obj = 0;
 	if (ft_checkextension(file) == -1)
 		return(-1);
-	cnt_obj = ft_cnt_obj(file);
-	printf("cnt_obj : %d\n", cnt_obj);
-	// ft_addvalue(file, data);
+	// cnt_obj = ft_cnt_obj(file);
+	// printf("cnt_obj : %d\n", cnt_obj);
+	ft_addvalue(file, data);
 	
 	return (0);
 }
