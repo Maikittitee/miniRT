@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 21:13:28 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:07:49 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 {
 	t_ray ray;
 	t_color color;
+	float ap;
 	int	x;
 	int y;
+
+	ap = (float)WIN_HEIGHT/ (float)WIN_WIDTH;
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
@@ -40,7 +43,7 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 		while  (x < WIN_WIDTH)
 		{
 			ray = gen_ray(x, y, data);
-			color = per_pixel(ray, data->obj, *data); // color = per_pixel(ray);
+			color = per_pixel(ray, data->obj, *data);
 			my_put_to_img(*buffer, *img, (t_vec){x, y, 0}, color);
 			x++;
 		}

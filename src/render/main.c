@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/04 00:30:08 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/06 23:27:29 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	main()
 {
 	t_viewport viewport;
 	t_data	data;
-
-
 	t_cam	cam;
 	t_light light;
 
@@ -29,19 +27,29 @@ int	main()
 	data.cam = cam;
 
 
-	light.ori = (t_vec){-10, 10, 5};
+	light.ori = (t_vec){-20, 20, -10};
 	light.ratio = 1;
 	
-	data.nobj = 2;
+	data.nobj = 4;
 	data.obj = malloc(sizeof(t_obj) * data.nobj);
 	data.obj[0].type = SPHERE;
 	data.obj[0].color = (t_color){255, 0, 0, 255};
-	data.obj[0].ori = (t_vec){5, 0, -10};
+	data.obj[0].ori = (t_vec){0, 0, -50};
 	data.obj[0].d = 10;
 	data.obj[1].type = SPHERE;
-	data.obj[1].color = (t_color){0, 255, 0, 255};
-	data.obj[1].ori = (t_vec){-10, 0, -10};
+	data.obj[1].color = (t_color){255, 0, 0, 255};
+	data.obj[1].ori = (t_vec){15, 0, -50};
 	data.obj[1].d = 10;
+	data.obj[2].type = SPHERE;
+	data.obj[2].color = (t_color){255, 0, 0, 255};
+	data.obj[2].ori = (t_vec){-15, 0, -50};
+	data.obj[2].d = 10;
+	data.obj[3].type = PLANE;
+	data.obj[3].color = (t_color){255, 0, 255, 255};
+	data.obj[3].ori = (t_vec){0, 0, -50};
+	data.obj[3].normal_vec = (t_vec){0, 0, -10};
+
+	
 	data.light = light;
 	print_vec(cam.origin);
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);

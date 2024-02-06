@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 21:12:59 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/06 23:31:47 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
 # define PI 3.14159265358979
+# define VERYSMALLNUMBER 0.001f 
 # include "../lib/libft_gnl/libft.h"
 # include "../lib/mlx/mlx.h"
 # include <stdio.h>
@@ -162,6 +163,6 @@ void	print_vec(t_vec u);
 
 t_color hit_object(t_ray ray, t_obj *obj, t_data data);
 float	hit_sphere(t_ray ray, t_obj sphere);
-
+float hit_plane(t_ray ray, t_obj plane);
 
 #endif

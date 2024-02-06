@@ -14,7 +14,8 @@ RENDER_FILE	:= main.c \
 				viewport.c\
 				sphere.c\
 				color.c\
-				object.c
+				object.c\
+				plane.c
 
 # PARSER_DIR = src/parser/
 
