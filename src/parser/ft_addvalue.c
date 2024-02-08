@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:30:04 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/03 20:05:46 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:27:26 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_add_ambient(t_data *data, char **sp_line, int *mode)
 			// printf("r : %d\n", data->amb.color.r);
 			data->amb.color.g = ft_atousc(sp[1]);
 			data->amb.color.b = ft_atousc(sp[2]);
-			
+
 			data->amb.color.a = 255;
 			// protect r g b [0, 255]
 			ft_doublefree(sp);
@@ -84,13 +84,15 @@ t_sphere	*ft_add_sphere(t_data *data, char **sp_line)
 	char **sp_ori;
 	char	**sp_clr;
 	(void)data;
-	t_sphere sphere;
+	t_sphere *sphere;
+
+	sphere = malloc(sizeof(t_sphere));
 	// ∗ R,G,B colors in range [0-255]: 10, 0, 255
 	// ft_print2d(sp_line);
 	if (ft_cnt2d(sp_line) != 4)
 	{
 		printf("Error file--\n");
-		return(0);	
+		return(0);
 	}
 	sp_ori = ft_split(sp_line[1], ',');
 	if (ft_cnt2d(sp_ori) != 3)
@@ -98,30 +100,30 @@ t_sphere	*ft_add_sphere(t_data *data, char **sp_line)
 		printf("Error file\n");
 		return(0);
 	}
-	sphere.ori.i = ft_atof(sp_ori[0]);
-	sphere.ori.j = ft_atof(sp_ori[1]);
-	sphere.ori.k = ft_atof(sp_ori[2]);
-	printf("i : %f\n", sphere.ori.i);
-	printf("j : %f\n", sphere.ori.j);
-	printf("k : %f\n", sphere.ori.k);
+	sphere->ori.i = ft_atof(sp_ori[0]);
+	sphere->ori.j = ft_atof(sp_ori[1]);
+	sphere->ori.k = ft_atof(sp_ori[2]);
+	// printf("i : %f\n", sphere.ori.i);
+	// printf("j : %f\n", sphere.ori.j);
+	// printf("k : %f\n", sphere.ori.k);
 	sp_clr = ft_split(sp_line[3], ',');
 	// ft_print2d(sp_clr);
 	// printf("sp_line 3 : %s\n", sp_line[3]);
 	// printf("sp_clr : %s\n", sp_clr[0]);
 	// printf("sp_clr : %s\n", sp_clr[1]);
 	// printf("sp_clr : %s\n", sp_clr[2]);
-		
+
 	// sphere.color.r = 0;
 	// printf("after prt color\n");
-	sphere.d = ft_atof(sp_line[3]);
+	sphere->d = ft_atof(sp_line[3]);
 	// printf("di : %f\n", sphere.d);
-	sphere.color.r = ft_atousc(sp_clr[0]);
-	sphere.color.g = ft_atousc(sp_clr[1]);
-	sphere.color.b = ft_atousc(sp_clr[2]);
+	sphere->color.r = ft_atousc(sp_clr[0]);
+	sphere->color.g = ft_atousc(sp_clr[1]);
+	sphere->color.b = ft_atousc(sp_clr[2]);
 	// printf("r : %d\n", sphere.color.r);
 	// printf("g : %d\n", sphere.color.g);
 	// printf("b : %d\n", sphere.color.b);
-	
+
 	// data->obj->obj = sphere;
 	// assign value
 	ft_doublefree(sp_clr);
@@ -173,43 +175,3 @@ t_data	*ft_addvalue(char *file, t_data *data)
 }
 
 
-int ft_cnt_obj(char *file)
-{
-	int		fd;
-	char	*line;
-	char	**sp_line;
-	int		cnt;
-		
-	fd = open(file , O_RDONLY);
-	if (fd == -1)
-		return(0);
-	cnt = 0;
-	while(1)
-	{
-		line = get_next_line(fd);
-		// if(!line && cnt > 0) // fixed cnt = 0 (It mean malloc don't have obj)
-		if(!line) // fixed cnt = 0 (It mean malloc don't have obj)
-		{			
-			// printf("cnt__ : %d\n", cnt);
-			close(fd);
-			return(cnt);
-		}
-		// check ambient 
-		if (line[0] != '\n')
-		{
-			// printf("Entry\n");
-			sp_line = ft_split(line, ' ');
-			// printf("sp_line : %s\n", sp_line[0]);
-			if (ft_strcmp(sp_line[0], "cy") == 0 || ft_strcmp(sp_line[0], "sp") == 0 || ft_strcmp(sp_line[0], "pl") == 0)
-				cnt = cnt + 1;
-			else if ((ft_strcmp(sp_line[0], "A") == 0) || (ft_strcmp(sp_line[0], "C") == 0) 
-			|| (ft_strcmp(sp_line[0], "L") == 0 ))
-				continue ;
-			else
-				printf("Error file\n");
-			ft_doublefree(sp_line);
-		}
-		free(line);
-	}
-	return(0);
-}

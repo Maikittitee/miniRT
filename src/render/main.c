@@ -6,29 +6,29 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/30 14:57:06 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:01:34 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	mock_data(t_data *data)
-{
-	t_sphere sphere;
+// void	mock_data(t_data *data)
+// {
+// 	t_sphere sphere;
 
-	sphere.color = (t_color){255, 0, 255, 255};
-	sphere.d = 4;
-	sphere.ori = (t_vec){0, 0, 0};
+// 	sphere.color = (t_color){255, 0, 255, 255};
+// 	sphere.d = 4;
+// 	sphere.ori = (t_vec){0, 0, 0};
 
-	t_obj *obj;
+// 	t_obj *obj;
 
-	obj = malloc(sizeof(t_obj));
-	obj->obj = &sphere;
-	obj->type = SPHERE;
-	// obj->next = NULL;
+// 	obj = malloc(sizeof(t_obj));
+// 	obj->obj = &sphere;
+// 	obj->type = SPHERE;
+// 	// obj->next = NULL;
 
-	data->obj = obj;
-}
+// 	data->obj = obj;
+// }
 
 // int main()
 // {

@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/01/30 14:18:13 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:01:22 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,22 +113,41 @@ typedef enum e_type{
 	CYLINDER
 }t_type;
 
+typedef struct s_viewport{
+	float width;
+	float height;
+	t_vec step_x;
+	t_vec step_y;
+	t_vec origin;
+	t_axis axis;
+	t_vec width_vec;
+	t_vec height_vec;
+	t_vec upper_left_px;
+} t_viewport;
+
 typedef struct s_obj{
-	void *obj;
 	t_type type;
-	// struct s_obj *next;
+	t_color	color;
+	t_vec	ori;
+	t_vec	normal_vec;
+	float	d;
+	float	h;
+
 } t_obj;
 
+
 typedef struct s_data{
-	t_light		*light;
+	t_obj		*obj;
+	t_viewport	viewport;
+	t_light		light;
 	t_cam		cam;
 	t_amb		amb;
 	void		*mlxp;
 	void		*winp;
 	void		*imgp;
-	t_obj		*obj;
-
+	unsigned int nobj;
 } t_data;
+
 
 typedef enum e_bool{
 	False,

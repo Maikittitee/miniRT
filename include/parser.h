@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:15:42 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/01/31 02:16:43 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:15:37 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void    ft_assign_obj(int cnt_obj, t_data *data, char **sp_line);
 int     ft_cnt_obj(char *file);
 int     ft_checkobj(char *str);
 t_data	*ft_main_addvalue(char *file, t_data *data);
+void	ft_doublefree(char **str);
 
 t_data	*ft_addvalue(char *file, t_data *data);
 int		ft_add_camera(t_data *data, char **sp_line, int *mode);

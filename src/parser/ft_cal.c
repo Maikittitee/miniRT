@@ -6,11 +6,34 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:32:19 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/01/26 09:19:17 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:03:05 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
+
+int		ft_atorgb(char *str)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	res = 0;
+	while((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if(str[i] == '+' || str[i] == '-')
+		return(-1);
+	while(str[i])
+	{
+		if (str[i] < '0' && str[i] > '9')
+			return(-1);
+		res = (res * 10) + str[i] - '0';
+		i++;
+	}
+	if (res > 255)
+		return(-1);
+	return(res);
+}
 
 float	ft_power(float nbr, int pow)
 {

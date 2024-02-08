@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:03:28 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/01/26 13:00:48 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:32:32 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_print2d(char **str)
 
 	i = -1;
 	while(str[++i])
-		printf("line_ : %s\n", str[i]);
+		printf("line[%d] : %s\n",i , str[i]);
 }
 
 void	ft_printmain(t_data *data)

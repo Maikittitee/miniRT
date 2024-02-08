@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:12:57 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/03 19:23:31 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:18:22 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,17 @@ int		ft_checkextension(char *str)
 int	ft_checkfile(char *file, t_data *data)
 {
 	// int cnt_obj;
-	(void)data;
 
-	// cnt_obj = 0;
 	if (ft_checkextension(file) == -1)
 		return(-1);
 	// cnt_obj = ft_cnt_obj(file);
+	// data->obj = malloc(sizeof(t_obj) * (cnt_obj+ 1));
+	// if (!data->obj)
+		// return(0);
+
 	// printf("cnt_obj : %d\n", cnt_obj);
 	ft_addvalue(file, data);
-	
+
 	return (0);
 }
 
