@@ -11,28 +11,48 @@ t_vec	ft_vector(char *sp_line)
 	vec.k = ft_atof(sp_vec[2]);
 	return(vec);
 }
+void	ft_checkerr_color(char	**tmp_color)
+{
+	int	tmp1;
+	int	tmp2;
+	int	tmp3;
 
+	tmp1 = ft_atorgb(tmp_color[0]);
+	// printf("tmp1 : %d\n", tmp1);
+	tmp2 = ft_atorgb(tmp_color[1]);
+	// printf("tmp2 : %d\n", tmp2);
+	tmp3 = ft_atorgb(tmp_color[2]);
+	// printf("tmp3 : %d\n", tmp3);
+	if (tmp1 == -1 || tmp2 == -1 || tmp3 == -1)
+	{
+		printf("Error filec\n");
+		free(tmp_color);
+		exit(0);
+	}
+
+}
 t_color	ft_color(char *sp_line)
 {
 	char	**sp_clr;
 	t_color	clr;
 
 	sp_clr = ft_split(sp_line, ',');
-	// range clr between 0 to 255
-	clr.r = ft_atousc(sp_clr[0]);
-	clr.g = ft_atousc(sp_clr[1]);
-	clr.b = ft_atousc(sp_clr[2]);
+	ft_checkerr_color(sp_clr);
+	clr.r = ft_atorgb(sp_clr[0]);
+	clr.g = ft_atorgb(sp_clr[1]);
+	clr.b = ft_atorgb(sp_clr[2]);
 	clr.a = 255;
+	ft_doublefree(sp_clr);
 	return(clr);
 }
 int		ft_sphere(t_obj *sp, char **sp_line)
 {
 	// printf("ft_sphere\n");
 	// ft_print2d(sp_line);
-	sp->type = SPHERE; // sp[0]
-	sp->ori = ft_vector(sp_line[1]); // sp[1]
-	sp->d = ft_atoi(sp_line[2]); // sp[2]
-	sp->color = ft_color(sp_line[3]); // sp[3]
+	sp->type = SPHERE;
+	sp->ori = ft_vector(sp_line[1]);
+	sp->d = ft_atoi(sp_line[2]);
+	sp->color = ft_color(sp_line[3]);
 	return(0);
 }
 int		ft_cylinder(t_obj *cy, char **sp_line)
@@ -51,8 +71,8 @@ int		ft_cylinder(t_obj *cy, char **sp_line)
 }
 int	ft_plane(t_obj *pl, char **sp_line)
 {
-	printf("ft_plane\n");
-	ft_print2d(sp_line);
+	// printf("ft_plane\n");
+	// ft_print2d(sp_line);
 	pl->type = PLANE;
 	pl->ori = ft_vector(sp_line[1]);
 	pl->normal_vec = ft_vector(sp_line[2]);
@@ -84,6 +104,6 @@ void	ft_assign_obj(int cnt_obj, t_data *data, char **sp_line)
 		}
 		i++;
 	}
-	
+
 	// data->obj[i] = NULL;
 }
