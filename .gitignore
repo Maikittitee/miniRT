@@ -3,5 +3,6 @@ minirt
 */*.o
 *.a
 */*.a
+*.debug
 
 .DS_Store
