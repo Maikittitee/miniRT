@@ -6,17 +6,12 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/14 17:42:31 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:19:36 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-float get_dot_product(t_obj obj, t_vec hitpoint)
-{
-	
-	
-}
 
 float activte_dot(float dot, int type)
 {
@@ -30,13 +25,27 @@ t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint)
 	if (obj.type == SPHERE)
 		return (vector_norm(vector_sub(hitpoint, obj.ori)));
 	if (obj.type == PLANE)
-		return (vector_norm(vector_scaler(-1.0f, obj.normal_vec)));
+		return (vector_norm(obj.normal_vec));
 	return ((t_vec){0, 0, 0});
+}
+
+float get_dot_product(t_obj obj, t_vec hitpoint, t_light light)
+{
+	t_vec obj_normal_vec = calculate_normal_vector(obj, hitpoint);
+	t_vec hitpoint_to_light = vector_norm(vector_sub(light.ori, hitpoint)); // work witg all type of object
+	
+	float dot_p = vector_dot(obj_normal_vec, hitpoint_to_light);
+	if (dot_p < 0 && obj.type == PLANE)
+	{
+		obj_normal_vec = vector_norm(vector_scaler(-1.0f, obj_normal_vec));
+		dot_p = vector_dot(obj_normal_vec, hitpoint_to_light);
+	}
+	return (activte_dot(dot_p, obj.type));
 }
 
 float get_closet_t(float new_t, float old_t, int *target_index, int index)
 {
-	// printf("t: %f\n", new_t);
+	printf("t: %f\n", new_t);
 	if (new_t < 0.0f)
 		return (old_t);
 	if (new_t > old_t)
@@ -84,11 +93,11 @@ t_color hit_object(t_ray ray, t_obj *obj, t_data data)
 	t_vec unit_dir = vector_norm(ray.dir);
 	t_vec hitpoint = vector_add(ray.ori, vector_scaler(closet_t, unit_dir)); // work with all type of object
 	
-	float dot_p = get_dot_product(obj[target_index], hitpoint);
-	t_vec sp_normal_vec = calculate_normal_vector(obj[target_index], hitpoint);
-	t_vec hitpoint_to_light = vector_norm(vector_sub(data.light.ori, hitpoint)); // work witg all type of object
-	float dot_p = vector_dot(sp_normal_vec, hitpoint_to_light);
-	dot_p = activte_dot(dot_p, obj[target_index].type);
+	float dot_p = get_dot_product(obj[target_index], hitpoint, data.light);
+	// t_vec sp_normal_vec = calculate_normal_vector(obj[target_index], hitpoint);
+	// t_vec hitpoint_to_light = vector_norm(vector_sub(data.light.ori, hitpoint)); // work witg all type of object
+	// float dot_p = vector_dot(sp_normal_vec, hitpoint_to_light);
+	// dot_p = activte_dot(dot_p, obj[target_index].type);
 	printf("virtual (%.2f %.2f) there intersec obj %d at hp(%.2f, %.2f, %.2f)\n", ray.dir.x, ray.dir.y, obj[target_index].type, hitpoint.x, hitpoint.y, hitpoint.z);
 	return (color_scaler(dot_p, obj[target_index].color));
 	

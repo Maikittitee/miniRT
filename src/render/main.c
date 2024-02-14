@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/14 17:35:39 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:24:00 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main()
 	init_viewport(&viewport, &cam);
 	data.cam = cam;
 
-	light.ori = (t_vec){0, -10, -40};
+	light.ori = (t_vec){-20, 10, -10};
 	light.ratio = 1;
 	
 	data.nobj = 2;
