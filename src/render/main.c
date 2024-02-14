@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/07 22:57:37 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:35:39 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,41 @@ int	main()
 	light.ori = (t_vec){0, -10, -40};
 	light.ratio = 1;
 	
-	data.nobj = 6;
+	data.nobj = 2;
 	data.obj = malloc(sizeof(t_obj) * data.nobj);
 	data.obj[0].type = SPHERE;
 	data.obj[0].color = (t_color){255, 255, 100, 255};
 	data.obj[0].ori = (t_vec){0, 0, -50};
 	data.obj[0].d = 10;
+
 	
 
 	data.obj[1].type = PLANE;
-	data.obj[1].color = (t_color){255, 0, 0, 255};
-	data.obj[1].ori = (t_vec){-20, 0, -100};
-	data.obj[1].normal_vec = (t_vec){1, 0, 1};
-	
-	data.obj[2].type = PLANE;
-	data.obj[2].color = (t_color){15, 23, 87, 255};
-	data.obj[2].ori = (t_vec){20, 0, -100};
-	data.obj[2].normal_vec = (t_vec){-1, 0, 1};
-	
-	data.obj[3].type = PLANE;
-	data.obj[3].color = (t_color){64, 84,64, 255};
-	data.obj[3].ori = (t_vec){0, 0, -100};
-	data.obj[3].normal_vec = (t_vec){0, -1, 1};
+	data.obj[1].color = (t_color){255, 0, 255, 255};
+	data.obj[1].ori = (t_vec){0, 0, -100};
+	data.obj[1].normal_vec = (t_vec){0, 0, 1};
 
-	data.obj[4].type = PLANE;
-	data.obj[4].color = (t_color){64, 64, 64, 255};
-	data.obj[4].ori = (t_vec){0, 0, -100};
-	data.obj[4].normal_vec = (t_vec){0, 1, 1};
-
-
-	data.obj[5].type = PLANE;
-	data.obj[5].color = (t_color){116, 23, 87, 255};
-	data.obj[5].ori = (t_vec){0, 0, -80};
-	data.obj[5].normal_vec = (t_vec){0, 0, -10};
-	
+	// data.obj[2].type = PLANE;
+	// data.obj[2].color = (t_color){15, 23, 87, 255};
+	// data.obj[2].ori = (t_vec){20, 0, -100};
+	// data.obj[2].normal_vec = (t_vec){-1, 0, 1};
+	//
+	// data.obj[3].type = PLANE;
+	// data.obj[3].color = (t_color){64, 84,64, 255};
+	// data.obj[3].ori = (t_vec){0, 0, -100};
+	// data.obj[3].normal_vec = (t_vec){0, -1, 1};
+	//
+	// data.obj[4].type = PLANE;
+	// data.obj[4].color = (t_color){64, 64, 64, 255};
+	// data.obj[4].ori = (t_vec){0, 0, -100};
+	// data.obj[4].normal_vec = (t_vec){0, 1, 1};
+	//
+	//
+	// data.obj[5].type = PLANE;
+	// data.obj[5].color = (t_color){116, 23, 87, 255};
+	// data.obj[5].ori = (t_vec){0, 0, -80};
+	// data.obj[5].normal_vec = (t_vec){0, 0, -10};
+	//
 	data.light = light;
 	print_vec(cam.origin);
 	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
