@@ -6,14 +6,14 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:53:31 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/03 21:19:11 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:32:21 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
 
-float hit_sphere(t_ray ray,t_obj sphere)
+float hit_sphere(t_ray ray, t_obj sphere)
 {
 	t_vec oc;
 	float a;
