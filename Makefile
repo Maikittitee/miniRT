@@ -21,6 +21,7 @@ PARSER_FILE	:= checkfile.c \
 				ft_print.c \
 				ft_cnt.c \
 				ft_obj.c \
+				ft_atof.c \
 
 
 SRCS := $(addprefix $(RENDER_DIR), $(RENDER_FILE)) \

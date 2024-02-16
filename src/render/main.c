@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/07 16:01:34 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:01:18 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,7 @@ int	main(int ac, char **av)
 		printf("file errror\n");
 		return (0);
 	}
+
+	// printf("before print\n");
+	ft_printmain(&data);
 }
