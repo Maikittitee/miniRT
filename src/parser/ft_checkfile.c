@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:21:00 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/17 17:17:27 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/17 21:28:22 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,17 @@ int	ft_checkfile(t_data *data, char *file)
 		return (-1);
 	if (ft_check_acl(data->ps) == -1)
 		return (-1);
-	// ft_check_acl(file, data);
 	// printf("cnt_a : %d\n", data->ps.cnt_a);
 	// printf("cnt_c : %d\n", data->ps.cnt_c);
 	// printf("cnt_l : %d\n", data->ps.cnt_l);
-	// A C L should have only 1
-	printf("nobj %u\n", data->nobj) ;
-	data->obj = malloc(sizeof(t_obj) * data->nobj);
-	if (!data->obj)
-		return(0);
+	// printf("nobj %u\n", data->nobj) ;
+	// printf("check format : %d\n", ft_checkformat(data, file, &state));
+	ft_checkformat(data, file, &state);
+	if (state == -1)
+		return (-1);
+
+	// data->obj = malloc(sizeof(t_obj) * data->nobj);
+	// if (!data->obj)
+	// 	return(0);
 	return(0);
 }

@@ -20,6 +20,10 @@ PARSER_FILE	= ft_checkfile.c \
 				ft_print.c \
 				ft_cnt.c\
 				ft_free.c\
+				ft_checkformat.c \
+				ft_format_obj.c \
+				ft_checkfmt_util.c \
+				
 
 SRCS := $(addprefix $(RENDER_DIR), $(RENDER_FILE)) \
 		$(addprefix $(PARSER_DIR), $(PARSER_FILE))

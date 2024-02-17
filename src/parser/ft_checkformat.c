@@ -1,35 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cnt.c                                           :+:      :+:    :+:   */
+/*   ft_checkformat.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/17 15:46:10 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/17 21:43:42 by nkietwee         ###   ########.fr       */
+/*   Created: 2024/02/17 18:21:45 by nkietwee          #+#    #+#             */
+/*   Updated: 2024/02/17 21:28:41 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-int	ft_check_cntobj(t_data *data)
+int	ft_checkratio(char *str)
 {
-	if ((ft_strcmp(data->ps.sp_line[0], "cy") == 0) || \
-		(ft_strcmp(data->ps.sp_line[0], "pl") == 0) || \
-		(ft_strcmp(data->ps.sp_line[0], "sp") == 0))
-		data->nobj++;
-	else if (ft_strcmp(data->ps.sp_line[0], "A") == 0)
-		data->ps.cnt_a++;
-	else if (ft_strcmp(data->ps.sp_line[0], "C") == 0)
-		data->ps.cnt_c++;
-	else if (ft_strcmp(data->ps.sp_line[0], "L") == 0)
-		data->ps.cnt_l++;
-	else
+	//check not nbr
+	if (ft_isdigit(str[0]) == 0)
+		return(-1);
+	if (ft_check_notnbr_point(str) == -1)
+		return (-1);
+	if (ft_count_char(str, '.') != 1)
 		return (-1);
 	return (0);
 }
 
-int	ft_check_obj(char *file, t_data *data, int *state)
+
+
+int	ft_check_formatobj(t_data *data)
+{
+	if (ft_strcmp(data->ps.sp_line[0], "A") == 0)
+		return(ft_fmt_a(data));
+	// printf("check format : %d\n", ft_fmt_a(data));
+	// printf("exit format\n");
+	// else if (ft_strcmp(data->ps.sp_line[0], "C") == 0)
+
+	// else if (ft_strcmp(data->ps.sp_line[0], "L") == 0)
+	// else if (ft_strcmp(data->ps.sp_line[0], "cy") == 0)
+
+	// else if	(ft_strcmp(data->ps.sp_line[0], "pl") == 0)
+
+	// else if	(ft_strcmp(data->ps.sp_line[0], "sp") == 0)
+
+	return(0);
+}
+
+int	ft_checkformat(t_data *data ,char *file, int *state)
 {
 	data->ps.fd = open(file, O_RDONLY);
 	if (data->ps.fd == -1)
@@ -45,20 +60,13 @@ int	ft_check_obj(char *file, t_data *data, int *state)
 		if (data->ps.line[0] != '\n')
 		{
 			data->ps.sp_line = ft_split(data->ps.line, ' ');
-			if (ft_check_cntobj(data) == -1)
+
+			if (ft_check_formatobj(data) == -1)
 				*state = -1;
+			// printf("ft_check format obj : %d\n", ft_check_formatobj(data));
 			ft_doublefree(data->ps.sp_line);
 		}
 		free(data->ps.line);
 	}
-}
-
-int	ft_cnt2d(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	return (0);
 }
