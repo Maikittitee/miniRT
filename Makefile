@@ -13,12 +13,16 @@ RENDER_FILE	:= main.c \
 				math.c \
 				img.c
 
-# PARSER_DIR = src/parser/
+PARSER_DIR = src/parser/
 
-# PARSER_FILE	:= main.c \
+PARSER_FILE	= ft_checkfile.c \
+				ft_parser.c \
+				ft_print.c \
+				ft_cnt.c\
+				ft_free.c\
 
-SRCS := $(addprefix $(RENDER_DIR), $(RENDER_FILE))
-
+SRCS := $(addprefix $(RENDER_DIR), $(RENDER_FILE)) \
+		$(addprefix $(PARSER_DIR), $(PARSER_FILE))
 OBJS	:= $(SRCS:.c=.o)
 
 LIBFT_DIR	:= $(LIB_DIR)libft_gnl
@@ -34,12 +38,16 @@ FRAME_W	:= -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MINILIBX) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(MINILIBX) -I$(LIBFT_DIR)\
-		-L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx $(FRAME_W) -o $(NAME)
+# $(NAME): $(OBJS) $(MINILIBX) $(LIBFT)
+# 	$(CC) $(CFLAGS) $(OBJS) $(MINILIBX) -I$(LIBFT_DIR)\
+# 		-L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx $(FRAME_W) -o $(NAME)
 
-$(MINILIBX):
-	$(MAKE) -C $(MLX_DIR)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS)  -I$(LIBFT_DIR)\
+		-L$(LIBFT_DIR) -lft  -o $(NAME)
+
+# $(MINILIBX):
+# 	$(MAKE) -C $(MLX_DIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
