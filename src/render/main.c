@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/18 23:44:12 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/18 23:55:36 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main()
 	t_light light;
 
 	// initial camera 	
-	cam.direction = (t_vec){0, 0, 1};
+	cam.direction = (t_vec){0, 0, -1};
 	cam.fov = 70;
 	cam.origin = (t_vec){0, 0, 0};
 
@@ -66,7 +66,7 @@ int	main()
 	// data.obj[5].ori = (t_vec){0, 0, -80};
 	// data.obj[5].normal_vec = (t_vec){0, 0, -10};
 	//
-	// data.light = light;
+	data.light = light;
 	// print_vec(cam.origin);
 	// printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
 	// printf("origin\n");
