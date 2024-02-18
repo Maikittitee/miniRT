@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/18 23:55:36 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:04:44 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ int	main()
 	render(&data, &img, &buffer);
 	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
 
-	print_vec(data.cam.origin);
+	// print_vec(data.cam.origin);
 	// loop
+	mlx_hook(data.winp, 17, 0, close_win, &data);
+	mlx_hook(data.winp, 2, 1, ft_exit, &data);
     mlx_loop(mlx);	
 	free(data.obj);
 }

@@ -15,7 +15,8 @@ RENDER_FILE	:= main.c \
 				sphere.c\
 				color.c\
 				object.c\
-				plane.c
+				plane.c\
+				key.c
 
 # PARSER_DIR = src/parser/
 

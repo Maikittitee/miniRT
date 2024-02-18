@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/06 23:31:47 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/19 00:56:16 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
+# define ESC_KEY 53
 # define PI 3.14159265358979
 # define VERYSMALLNUMBER 0.001f 
 # include "../lib/libft_gnl/libft.h"
@@ -165,4 +166,7 @@ t_color hit_object(t_ray ray, t_obj *obj, t_data data);
 float	hit_sphere(t_ray ray, t_obj sphere);
 float hit_plane(t_ray ray, t_obj plane);
 
+
+int	close_win(t_data data);
+int	ft_exit(int keycode, t_data data);
 #endif
