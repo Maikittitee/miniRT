@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:23:13 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/06 20:13:17 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:09:28 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_bool	init_viewport(t_viewport *viewport, t_cam *cam)
 
 	aspect_ratio = (float)WIN_HEIGHT/ (float)WIN_WIDTH;
 	printf("aspect ratio: %f\n", aspect_ratio);
-	viewport->origin = vector_add(cam->origin, cam->direction);
+	viewport->origin = vector_add(cam->origin, vector_norm(cam->direction));
 	viewport->width = 2.0f * tan(cam->fov * 0.00872222);
 	viewport->height = aspect_ratio * viewport->width;
 

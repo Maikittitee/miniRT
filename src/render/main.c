@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/18 17:06:27 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:42:55 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int	main()
 	t_cam	cam;
 	t_light light;
 
-	cam.direction = (t_vec){0, 0, -1};
+	// initial camera 	
+	cam.direction = (t_vec){0, 0, 1};
 	cam.fov = 70;
 	cam.origin = (t_vec){0, 0, 0};
 
+	// initial viewport
 	init_viewport(&viewport, &cam);
 	data.cam = cam;
 
@@ -31,17 +33,17 @@ int	main()
 	
 	data.nobj = 1;
 	data.obj = malloc(sizeof(t_obj) * data.nobj);
-	data.obj[0].type = SPHERE;
-	data.obj[0].color = (t_color){255, 255, 100, 255};
-	data.obj[0].ori = (t_vec){0, 0, -50};
-	data.obj[0].d = 10;
+	// data.obj[0].type = SPHERE;
+	// data.obj[0].color = (t_color){255, 255, 100, 255};
+	// data.obj[0].ori = (t_vec){0, 0, -50};
+	// data.obj[0].d = 10;
 
 	
 
-	// data.obj[0].type = PLANE;
-	// data.obj[0].color = (t_color){255, 0, 255, 255};
-	// data.obj[0].ori = (t_vec){0, -10, -100};
-	// data.obj[0].normal_vec = (t_vec){0, 1, 1};
+	data.obj[0].type = PLANE;
+	data.obj[0].color = (t_color){255, 0, 255, 255};
+	data.obj[0].ori = (t_vec){0, 0, -100};
+	data.obj[0].normal_vec = (t_vec){0, 0, 1};
 
 	// data.obj[2].type = PLANE;
 	// data.obj[2].color = (t_color){15, 23, 87, 255};
@@ -64,19 +66,19 @@ int	main()
 	// data.obj[5].ori = (t_vec){0, 0, -80};
 	// data.obj[5].normal_vec = (t_vec){0, 0, -10};
 	//
-	data.light = light;
-	print_vec(cam.origin);
-	printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
-	printf("origin\n");
-	print_vec(viewport.origin);
-	printf("width vec / height vec\n");
-	print_vec(viewport.width_vec);
-	print_vec(viewport.height_vec);
-	printf("step x,y\n");
-	print_vec(viewport.step_x);
-	print_vec(viewport.step_y);
-	printf("first pixel\n");
-	print_vec(viewport.upper_left_px);
+	// data.light = light;
+	// print_vec(cam.origin);
+	// printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
+	// printf("origin\n");
+	// print_vec(viewport.origin);
+	// printf("width vec / height vec\n");
+	// print_vec(viewport.width_vec);
+	// print_vec(viewport.height_vec);
+	// printf("step x,y\n");
+	// print_vec(viewport.step_x);
+	// print_vec(viewport.step_y);
+	// printf("first pixel\n");
+	// print_vec(viewport.upper_left_px);
 	// printf("x y z\n");
 	// print_vec(viewport.axis.x);
 	// print_vec(viewport.axis.y);
