@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/19 00:48:10 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:13:11 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,10 @@ t_color hit_object(t_ray ray, t_obj *obj, t_data data)
 	}
 	if (target_index == -1 || closet_t < 0.0f)
 		return (background_color(ray));
-	printf("closet_t: %f\n", closet_t);
 	t_vec unit_dir = vector_norm(ray.dir);
 	t_vec hitpoint = vector_add(ray.ori, vector_scaler(closet_t, unit_dir)); // work with all type of object
 	
 	float dot_p = get_dot_product(obj[target_index], hitpoint, data.light);
-	printf("dot product: %f\n", dot_p);
-	// t_vec sp_normal_vec = calculate_normal_vector(obj[target_index], hitpoint);
-	// t_vec hitpoint_to_light = vector_norm(vector_sub(data.light.ori, hitpoint)); // work witg all type of object
-	// float dot_p = vector_dot(sp_normal_vec, hitpoint_to_light);
-	// dot_p = activte_dot(dot_p, obj[target_index].type);
-	printf("virtual (%.2f %.2f) there intersec obj %d at hp(%.2f, %.2f, %.2f)\n", ray.dir.x, ray.dir.y, obj[target_index].type, hitpoint.x, hitpoint.y, hitpoint.z);
 	return (color_scaler(dot_p, obj[target_index].color));
 	
 	

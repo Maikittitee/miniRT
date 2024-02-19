@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/19 01:04:44 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:13:41 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main()
 
 	light.ori = (t_vec){-20, 10, -10};
 	light.ratio = 1;
+	
+	data.light = light;
 	
 	data.nobj = 1;
 	data.obj = malloc(sizeof(t_obj) * data.nobj);
@@ -66,7 +68,6 @@ int	main()
 	// data.obj[5].ori = (t_vec){0, 0, -80};
 	// data.obj[5].normal_vec = (t_vec){0, 0, -10};
 	//
-	data.light = light;
 	// print_vec(cam.origin);
 	// printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
 	// printf("origin\n");
@@ -102,7 +103,6 @@ int	main()
 	render(&data, &img, &buffer);
 	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
 
-	// print_vec(data.cam.origin);
 	// loop
 	mlx_hook(data.winp, 17, 0, close_win, &data);
 	mlx_hook(data.winp, 2, 1, ft_exit, &data);
