@@ -6,12 +6,20 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/18 17:41:22 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:59:47 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
+t_color background_color(t_ray ray)
+{
+	t_vec unit_dir;
+
+	unit_dir = vector_norm(ray.dir); 
+	float a = 0.5f * (unit_dir.y + 1.0f); // use y as parameter 
+	return (t_color){(1 - 0.5 * a) * 255, (1 - 0.3 * a) * 255, 255, 255};
+}
 
 t_ray	gen_ray(int x, int y, t_data *data)
 {
@@ -54,5 +62,18 @@ t_bool render(t_data *data, t_img *img, char **buffer)
 
 t_color	per_pixel(t_ray ray, t_obj *obj, t_data data)
 {
-	return (hit_object(ray, obj, data));
+	t_hit hit = hit_object(ray, obj, data);
+
+	if (!hit.is_hit)
+		return (background_color(ray));
+	
+	t_vec unit_dir = vector_norm(ray.dir);
+	hit.hitpoint = vector_add(ray.ori, vector_scaler(hit.t, unit_dir)); // work with all type of object
+	
+	t_color color = calculate_color(hit, ray, data);
+	// get normal vec
+	// go to light
+	// 
+	
+	return (color);
 }

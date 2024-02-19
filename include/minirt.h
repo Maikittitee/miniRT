@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/19 00:56:16 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/19 21:17:50 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # include <stdlib.h>
 # include <math.h>
 
+typedef enum e_bool{
+	False,
+	True
+}t_bool;
 
 typedef struct s_color{
 	unsigned char r;
@@ -124,6 +128,14 @@ typedef struct s_obj{
 	
 } t_obj;
 
+typedef struct s_hit{
+	t_bool is_hit;
+	t_vec hitpoint;
+	int index;
+	float t;
+	
+}t_hit;
+
 typedef struct s_data{
 	t_obj		*obj;
 	t_viewport	viewport;
@@ -136,10 +148,6 @@ typedef struct s_data{
 	unsigned int nobj;
 } t_data;
 
-typedef enum e_bool{
-	False,
-	True
-}t_bool;
 
 t_bool render(t_data *data, t_img *img, char **buffer);
 
@@ -159,13 +167,18 @@ t_bool	init_viewport(t_viewport *viewport, t_cam *cam);
 
 t_color	per_pixel(t_ray ray, t_obj *obj, t_data data);
 void	my_put_to_img(char *buffer, t_img img, t_vec pnt, t_color color);
+t_color calculate_color(t_hit hit, t_ray ray, t_data data);
 
 void	print_vec(t_vec u);
 
-t_color hit_object(t_ray ray, t_obj *obj, t_data data);
+t_bool is_hit_object(t_ray ray, unsigned int except, t_obj *obj, t_data data);
+t_hit	hit_object(t_ray ray, t_obj *obj, t_data data);
 float	hit_sphere(t_ray ray, t_obj sphere);
 float hit_plane(t_ray ray, t_obj plane);
 
+float activte_dot(float dot, int type);
+t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint);
+float get_dot_product(t_obj obj, t_light light, t_hit hit, t_data data);
 
 int	close_win(t_data data);
 int	ft_exit(int keycode, t_data data);
