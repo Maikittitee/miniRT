@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/20 17:27:49 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:09:20 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,6 @@ t_color	per_pixel(t_ray ray, t_obj *obj, t_data data)
 	
 	t_color color = calculate_color(hit, ray, data);
 	color = apply_ambient(color, data.amb);
-	// get normal vec
-	// go to light
-	// 
-	
+;
 	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/19 23:14:28 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:29:02 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ float get_dot_product(t_obj obj, t_light light, t_hit hit, t_data data)
 
 	dot_p = activte_dot(dot_p, obj.type);
 
+	(void)data;
 	if (is_hit_object(tolight_ray, hit.index, data.obj, data))
 		return (0.0f);
 	

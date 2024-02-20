@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/19 21:17:50 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:57:08 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,8 @@ float hit_plane(t_ray ray, t_obj plane);
 float activte_dot(float dot, int type);
 t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint);
 float get_dot_product(t_obj obj, t_light light, t_hit hit, t_data data);
+t_color apply_ambient(t_color color, t_amb amb);
+
 
 int	close_win(t_data data);
 int	ft_exit(int keycode, t_data data);
