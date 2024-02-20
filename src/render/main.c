@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/19 23:12:54 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:24:53 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ int	main()
 	// initial viewport
 	init_viewport(&viewport, &cam);
 	data.cam = cam;
+	data.viewport = viewport;
 
+	// light
 	light.ori = (t_vec){15, 20, -30};
-	light.ratio = 1;
-	
+	light.ratio = 0.8;
 	data.light = light;
 	
+	// obj
 	data.nobj = 4;
 	data.obj = malloc(sizeof(t_obj) * data.nobj);
 	data.obj[0].type = SPHERE;
@@ -40,27 +42,12 @@ int	main()
 	data.obj[0].ori = (t_vec){0, 0, -50};
 	data.obj[0].d = 10;
 
-	
-
-	// data.obj[0].type = PLANE;
-	// data.obj[0].color = (t_color){255, 0, 255, 255};
-	// data.obj[0].ori = (t_vec){0, 0, -100};
-	// data.obj[0].normal_vec = (t_vec){0, 0, 1};
-
-	
-	// data.obj[1].type = PLANE;
-	// data.obj[1].color = (t_color){64, 84,64, 255};
-	// data.obj[1].ori = (t_vec){0, 0, -100};
-	// data.obj[1].normal_vec = (t_vec){0, 0, 1};
-
-
 	data.obj[1].type = SPHERE;
 	data.obj[1].color = (t_color){255, 255, 100, 255};
 	data.obj[1].ori = (t_vec){10, 0, -50};
 	data.obj[1].d = 10;
 
-	
-		data.obj[2].type = SPHERE;
+	data.obj[2].type = SPHERE;
 	data.obj[2].color = (t_color){255, 255, 100, 255};
 	data.obj[2].ori = (t_vec){-10, 0, -50};
 	data.obj[2].d = 10;
@@ -70,37 +57,8 @@ int	main()
 	data.obj[3].ori = (t_vec){0, -20, -100};
 	data.obj[3].normal_vec = (t_vec){0, 10, 1};
 	
-	// data.obj[4].type = PLANE;
-	// data.obj[4].color = (t_color){64, 64, 64, 255};
-	// data.obj[4].ori = (t_vec){0, 0, -100};
-	// data.obj[4].normal_vec = (t_vec){0, 1, 1};
-	//
-	//
-	// data.obj[5].type = PLANE;
-	// data.obj[5].color = (t_color){116, 23, 87, 255};
-	// data.obj[5].ori = (t_vec){0, 0, -80};
-	// data.obj[5].normal_vec = (t_vec){0, 0, -10};
-	//
-	// print_vec(cam.origin);
-	// printf("virtual viewport: %fx%f\n", viewport.height, viewport.width);
-	// printf("origin\n");
-	// print_vec(viewport.origin);
-	// printf("width vec / height vec\n");
-	// print_vec(viewport.width_vec);
-	// print_vec(viewport.height_vec);
-	// printf("step x,y\n");
-	// print_vec(viewport.step_x);
-	// print_vec(viewport.step_y);
-	// printf("first pixel\n");
-	// print_vec(viewport.upper_left_px);
-	// printf("x y z\n");
-	// print_vec(viewport.axis.x);
-	// print_vec(viewport.axis.y);
-	// print_vec(viewport.axis.z);
-	print_vec(cam.origin);
-
-	data.viewport = viewport; // check : can assign 
-
+	data.amb.color = (t_color){255, 0, 0, 255};
+	data.amb.ratio = 0.2;
 
 	void *mlx;
 	t_img img;
