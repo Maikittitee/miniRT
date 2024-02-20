@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/20 20:40:30 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/20 22:35:31 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main()
 	data.obj[3].normal_vec = (t_vec){0, 10, 1};
 	
 	data.amb.color = (t_color){255, 0, 0, 255};
-	data.amb.ratio = 0.2f;
+	data.amb.ratio = 1;
 
 	void *mlx;
 	t_img img;
