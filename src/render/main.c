@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/20 22:35:31 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/21 02:39:39 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,27 @@ int	main()
 	data.nobj = 4;
 	data.obj = malloc(sizeof(t_obj) * data.nobj);
 	data.obj[0].type = SPHERE;
-	data.obj[0].color = (t_color){255, 255, 255, 255};
+	data.obj[0].color = (t_color){255, 0, 0, 255};
 	data.obj[0].ori = (t_vec){0, 0, -50};
 	data.obj[0].d = 10;
 
 	data.obj[1].type = SPHERE;
-	data.obj[1].color = (t_color){255, 255, 255, 255};
+	data.obj[1].color = (t_color){0, 255, 0, 255};
 	data.obj[1].ori = (t_vec){10, 0, -50};
 	data.obj[1].d = 10;
 
 	data.obj[2].type = SPHERE;
-	data.obj[2].color = (t_color){255, 255, 255, 255};
+	data.obj[2].color = (t_color){0, 0, 255, 255};
 	data.obj[2].ori = (t_vec){-10, 0, -50};
 	data.obj[2].d = 10;
 
 	data.obj[3].type = PLANE;
-	data.obj[3].color = (t_color){255, 255, 255, 255};
+	data.obj[3].color = (t_color){64, 84, 64, 255};
 	data.obj[3].ori = (t_vec){0, -20, -100};
 	data.obj[3].normal_vec = (t_vec){0, 10, 1};
 	
-	data.amb.color = (t_color){255, 0, 0, 255};
-	data.amb.ratio = 1;
+	data.amb.color = (t_color){255, 255, 255, 255};
+	data.amb.ratio = 0.2;
 
 	void *mlx;
 	t_img img;
