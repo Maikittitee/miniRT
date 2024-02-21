@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/20 17:57:08 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/21 23:01:54 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ t_vec vector_scaler(float c, t_vec u);
 t_vec vector_div(t_vec u, t_vec v);
 t_color	color_scaler(float c, t_color color);
 t_color	color_add(t_color c1, t_color c2);
+t_color color_mult(t_color a, t_color b);
+
 
 t_bool	init_viewport(t_viewport *viewport, t_cam *cam);
 
