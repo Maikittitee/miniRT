@@ -6,13 +6,13 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:22:23 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/20 23:19:23 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:42:23 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-float ft_power(int index)
+float	ft_power(int index)
 {
 	float	res;
 	int		i;

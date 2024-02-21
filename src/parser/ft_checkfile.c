@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:21:00 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/21 16:23:05 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:43:29 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,41 +49,27 @@ int	ft_checkfile(t_data *data, char *file)
 	state = 0;
 	if (ft_check_extension(file) == -1)
 		return (-1);
-	// printf("1111\n");
 	ft_check_obj(file, data, &state);
-	// printf("222\n");
 	if (state == -1)
 		return (-1);
-	// printf("333\n");
 	if (ft_check_acl(data->ps) == -1)
 		return (-1);
-	// printf("444\n");
 	ft_checkformat(data, file, &state);
-	// printf("555\n");
-	// printf("---state : %d----\n", state);
 	if (state == -1)
 		return (-1);
-	// printf("before malloc\n");
 	printf("nobj : %d\n", data->nobj);
 	data->obj = malloc(sizeof(t_obj) * data->nobj);
 	if (!data->obj)
 		return (0);
-	// printf("before asafter assignsign\n");
 	if (ft_assign(file, &state, data) == -1)
 	{
-		// printf("entry assign\n");
 		free(data->obj);
 		return (-1);
 	}
-
-	printf("after assign\n");
-	// printf("Vec[i] : %f\n", data->obj[0].ori.i);
 	if (state == -1)
 	{
 		free(data->obj);
 		return (-1);
 	}
-	// printf("after after assign\n");
-	// free(data->obj);
 	return (0);
 }

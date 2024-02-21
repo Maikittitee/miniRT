@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 20:43:26 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/20 19:33:28 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:45:12 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_not(char *str, int mode)
 	{
 		while (str[i])
 		{
-			// printf("str[i] : %c\n", str[i]);
-			if ((str[i] < '0' || str[i] > '9') && str[i] != '.' && str[i] != '\n')
+			if ((str[i] < '0' || str[i] > '9') \
+			&& str[i] != '.' && str[i] != '\n')
 				return (-1);
 			i++;
 		}
@@ -62,14 +62,11 @@ int	ft_check_float(char *str)
 	sp_float = ft_split(str, ',');
 	i = 0;
 	len = ft_cnt2d(sp_float);
-	// ft_print2d(sp_float);
 	while (sp_float[i])
 	{
 		len_point = ft_count_char(sp_float[i], '.');
 		if (len_point > 1 || ft_not(sp_float[i], NOT_NBR_POINT_MINUS) == -1)
 		{
-			// printf("sp[%d] : %s\n", i ,sp_float[i]);
-			// printf("res : %d\n", ft_not(sp_float[i], NOT_NBR_POINT));
 			ft_doublefree(sp_float);
 			return (-1);
 		}

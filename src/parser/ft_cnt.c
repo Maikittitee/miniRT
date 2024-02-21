@@ -6,16 +6,16 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:46:10 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/20 23:02:34 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:46:50 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-int ft_checkobj(char *str)
+int	ft_checkobj(char *str)
 {
 	if (ft_strcmp(str, "cy") == 0 || ft_strcmp(str, "sp") == 0
-	|| ft_strcmp(str, "pl") == 0)
+		|| ft_strcmp(str, "pl") == 0)
 		return (1);
 	return (0);
 }
@@ -70,6 +70,3 @@ int	ft_cnt2d(char **str)
 		i++;
 	return (i);
 }
-
-// int	ft_cnt_sp(char **str)
-

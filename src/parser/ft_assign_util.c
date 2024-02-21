@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:55:52 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/21 16:21:02 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:41:49 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_vec	ft_vector_norm(char *str, int *state)
 	ft_doublefree(sp_norm);
 	return (norm);
 }
+
 t_vec	ft_vector_coor(char *str, int *state)
 {
 	t_vec	vec;
@@ -50,7 +51,6 @@ t_vec	ft_vector_coor(char *str, int *state)
 	vec.i = 0;
 	vec.j = 0;
 	vec.k = 0;
-	// printf("---state : %d---\n", *state);
 	if (ft_cnt2d(sp_vec) != 3)
 	{
 		*state = -1;
@@ -58,16 +58,13 @@ t_vec	ft_vector_coor(char *str, int *state)
 		return (vec);
 	}
 	vec.i = ft_atof(sp_vec[0]);
-	// printf("Vec[i] : %f\n", vec.i);
 	vec.j = ft_atof(sp_vec[1]);
-	// printf("Vec[j] : %f\n", vec.j);
 	vec.k = ft_atof(sp_vec[2]);
-	// printf("Vec[k] : %f\n", vec.k);
 	ft_doublefree(sp_vec);
-	return(vec);
+	return (vec);
 }
 
-t_color ft_assign_clr(char *sp_line, int *state)
+t_color	ft_assign_clr(char *sp_line, int *state)
 {
 	char	**sp_clr;
 	t_color	clr;
@@ -76,15 +73,12 @@ t_color ft_assign_clr(char *sp_line, int *state)
 	clr.r = 0;
 	clr.g = 0;
 	clr.b = 0;
-	// printf("ft_assign_clr\n");
-	// printf("state[clr]_1 : %d\n", *state);
 	if (ft_cnt2d(sp_clr) != 3)
 	{
 		*state = -1;
 		return (clr);
 	}
 	clr.r = ft_atorgb(sp_clr[0], state);
-	// printf("state[clr]_2 : %d\n", *state);
 	if (*state == -1)
 	{
 		ft_doublefree(sp_clr);
@@ -109,6 +103,5 @@ t_color ft_assign_clr(char *sp_line, int *state)
 	}
 	clr.a = 255;
 	ft_doublefree(sp_clr);
-	// printf("clr : %s\n", sp_line);
 	return (clr);
 }
