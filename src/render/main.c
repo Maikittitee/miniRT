@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/17 16:43:24 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:18:20 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	main(int ac, char **av)
 	ft_initdata(&data);
 	// printf("ft_checkfile : %d\n", ft_checkfile(&data, av[1]));
 	if (ft_checkfile(&data, av[1]) == -1)
-		return(printf(RED"File Error\n"RESET));
-	// ft_print();
+		return (printf(RED"File Error\n"RESET));
+	ft_prt_obj(&data);
+	// free(data.obj);
 }

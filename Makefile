@@ -23,7 +23,11 @@ PARSER_FILE	= ft_checkfile.c \
 				ft_checkformat.c \
 				ft_format_obj.c \
 				ft_checkfmt_util.c \
-				
+				ft_assign_obj.c \
+				ft_assign_util.c \
+				ft_atof.c \
+				ft_atorgb.c \
+
 
 SRCS := $(addprefix $(RENDER_DIR), $(RENDER_FILE)) \
 		$(addprefix $(PARSER_DIR), $(PARSER_FILE))

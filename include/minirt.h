@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/17 16:42:05 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:43:17 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,13 @@ typedef enum e_bool{
 	False,
 	True
 }t_bool;
+
+typedef enum e_error
+{
+	NOT_NBR_POINT,
+	NOT_NBR_MINUS,
+	NOT_NBR_POINT_MINUS,
+} t_error;
 
 t_bool render(t_data *data, t_img *img, char **buffer);
 

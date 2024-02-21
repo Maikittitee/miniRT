@@ -6,11 +6,19 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:46:10 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/17 21:43:42 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/20 23:02:34 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
+
+int ft_checkobj(char *str)
+{
+	if (ft_strcmp(str, "cy") == 0 || ft_strcmp(str, "sp") == 0
+	|| ft_strcmp(str, "pl") == 0)
+		return (1);
+	return (0);
+}
 
 int	ft_check_cntobj(t_data *data)
 {
@@ -33,7 +41,7 @@ int	ft_check_obj(char *file, t_data *data, int *state)
 {
 	data->ps.fd = open(file, O_RDONLY);
 	if (data->ps.fd == -1)
-		return (0);
+		return (-1);
 	while (1)
 	{
 		data->ps.line = get_next_line(data->ps.fd);
@@ -62,3 +70,6 @@ int	ft_cnt2d(char **str)
 		i++;
 	return (i);
 }
+
+// int	ft_cnt_sp(char **str)
+
