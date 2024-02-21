@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:28:04 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/21 23:28:05 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/22 01:48:47 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_color color_add_w(t_color c1, t_color c2, float wa)
 t_color apply_ambient(t_color color, t_amb amb)
 {
 	amb.color = color_scaler(amb.ratio, amb.color);
-	return (color_add(amb.color, color));	
-	// return (color_add(abs_amb_color, color));
+	return (color_add(color, amb.color));	
+	// return (color_add_w(amb.color, color, amb.ratio));
 
 
 	// blend_color = color_scaler(0.5f , color_add(color, amb.color));
