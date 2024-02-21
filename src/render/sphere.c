@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 21:53:31 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/14 18:32:21 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:38:25 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ float hit_sphere(t_ray ray, t_obj sphere)
 	float discriminant;
 
 	if (sphere.type != SPHERE)
-		return (-1.0f);	
+		return (-1.0f);
+	// ray.ori = (t_vec){99, 0, -50};	
 	oc = vector_sub(ray.ori, sphere.ori); // not sure;
 	a = vector_dot(ray.dir, ray.dir);
 	h = vector_dot(oc, ray.dir);
