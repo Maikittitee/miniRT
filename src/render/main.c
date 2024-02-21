@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/21 02:39:39 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:07:19 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main()
 	t_light light;
 
 	// initial camera 	
-	cam.direction = (t_vec){0, 0, -1};
+	cam.direction = (t_vec){-1, 0, 0};
 	cam.fov = 70;
-	cam.origin = (t_vec){0, 0, 20};
+	cam.origin = (t_vec){50, 0, -50};
 
 	// initial viewport
 	init_viewport(&viewport, &cam);
@@ -58,7 +58,7 @@ int	main()
 	data.obj[3].normal_vec = (t_vec){0, 10, 1};
 	
 	data.amb.color = (t_color){255, 255, 255, 255};
-	data.amb.ratio = 0.2;
+	data.amb.ratio = 1;
 
 	void *mlx;
 	t_img img;
