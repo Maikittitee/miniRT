@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/21 23:01:54 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:53:11 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ t_bool is_hit_object(t_ray ray, unsigned int except, t_obj *obj, t_data data);
 t_hit	hit_object(t_ray ray, t_obj *obj, t_data data);
 float	hit_sphere(t_ray ray, t_obj sphere);
 float hit_plane(t_ray ray, t_obj plane);
+float	hit_cylinder(t_ray ray, t_obj cylin);
 
 float activte_dot(float dot, int type);
 t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint);
