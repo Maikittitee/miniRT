@@ -16,14 +16,16 @@ RENDER_FILE	:= main.c \
 PARSER_DIR = src/parser/
 
 PARSER_FILE	= ft_checkfile.c \
-				ft_parser.c \
 				ft_print.c \
+				ft_print_util.c \
 				ft_cnt.c\
 				ft_free.c\
 				ft_checkformat.c \
 				ft_format_obj.c \
+				ft_format_obj_util.c \
 				ft_checkfmt_util.c \
 				ft_assign_obj.c \
+				ft_assign_obj_util.c \
 				ft_assign_util.c \
 				ft_atof.c \
 				ft_atorgb.c \

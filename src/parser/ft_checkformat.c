@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 18:21:45 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/21 22:46:15 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/23 21:46:45 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_checkratio(char *str)
 
 	if (ft_isdigit(str[0]) == 0)
 		return (-1);
-	if (ft_not(str, NOT_NBR_POINT) == -1)
+	if (ft_not2(str, NOT_NBR_POINT) == -1)
 		return (-1);
 	len_point = ft_count_char(str, '.');
 	if (len_point == 0 || len_point == 1)
@@ -49,7 +49,7 @@ int	ft_checkformat(t_data *data, char *file, int *state)
 {
 	data->ps.fd = open(file, O_RDONLY);
 	if (data->ps.fd == -1)
-		return (0);
+		return (-1);
 	while (1)
 	{
 		data->ps.line = get_next_line(data->ps.fd);

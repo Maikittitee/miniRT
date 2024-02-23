@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:21:00 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/21 22:43:29 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/23 21:21:32 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	ft_check_extension(char *file)
 
 	if (!file)
 		return (0);
-	str = ft_strchr(file, '.');
+	str = ft_strrchr(file, '.');
+	if (!str)
+		return (-1);
 	if (ft_strcmp(str, ".rt") == 0)
 		return (0);
 	return (-1);
@@ -54,19 +56,12 @@ int	ft_checkfile(t_data *data, char *file)
 		return (-1);
 	if (ft_check_acl(data->ps) == -1)
 		return (-1);
-	ft_checkformat(data, file, &state);
-	if (state == -1)
+	if (ft_checkformat(data, file, &state) == -1 || state == -1)
 		return (-1);
-	printf("nobj : %d\n", data->nobj);
 	data->obj = malloc(sizeof(t_obj) * data->nobj);
 	if (!data->obj)
 		return (0);
-	if (ft_assign(file, &state, data) == -1)
-	{
-		free(data->obj);
-		return (-1);
-	}
-	if (state == -1)
+	if (ft_assign(file, &state, data) == -1 || state == -1)
 	{
 		free(data->obj);
 		return (-1);

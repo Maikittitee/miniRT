@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:01:11 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/21 22:42:52 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/23 18:45:10 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ unsigned char	ft_atorgb(char *str, int *state)
 
 	i = 0;
 	res = 0;
+	*state = 0;
 	while (str[i])
 	{
 		if (str[i] != '\n')
-		{
 			res = (10 * res) + (str[i] - '0');
-		}
 		if (res > 255)
 		{
 			*state = -1;

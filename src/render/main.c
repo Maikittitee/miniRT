@@ -6,7 +6,7 @@
 /*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/21 17:18:20 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/23 22:21:19 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ void	ft_initdata(t_data *data)
 	data->ps.cnt_a = 0;
 	data->ps.cnt_c = 0;
 	data->ps.cnt_l = 0;
+	data->obj->color.a = 0;
+	data->obj->color.r = 0;
+	data->obj->color.g = 0;
+	data->obj->color.b = 0;
 }
 int	main(int ac, char **av)
 {
@@ -73,9 +77,8 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return(printf(RED"./miniRT [filename.rt]\n"RESET));
 	ft_initdata(&data);
-	// printf("ft_checkfile : %d\n", ft_checkfile(&data, av[1]));
 	if (ft_checkfile(&data, av[1]) == -1)
-		return (printf(RED"File Error\n"RESET));
-	ft_prt_obj(&data);
-	// free(data.obj);
+		return (printf(RED"Error\nFile\n"RESET));
+	// ft_prt_obj(&data);
+	free(data.obj);
 }
