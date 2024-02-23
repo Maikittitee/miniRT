@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 21:07:55 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/23 22:40:24 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ t_hit hit_object(t_ray ray, t_obj *obj, t_data data)
 	target_index = -1;
 	while (i < data.nobj)
 	{
+		obj[i].normal_vec = vector_norm(obj[i].normal_vec);
 		if (obj[i].type == SPHERE)
 			closet_t = get_closet_t(hit_sphere(ray, obj[i]), closet_t, &target_index, i);
 		else if (obj[i].type == PLANE)
