@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 20:22:59 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:54:27 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ t_color	per_pixel(t_ray ray, t_obj *obj, t_data data)
 
 	if (!hit.is_hit)
 		return (background_color(ray));
-	else	
-		return (obj[hit.index].color);	
+	// else	
+		// return (obj[hit.index].color);	
 	t_vec unit_dir = vector_norm(ray.dir);
 	hit.hitpoint = vector_add(ray.ori, vector_scaler(hit.t, unit_dir)); // work with all type of object
 		
 	t_color color = calculate_color(hit, ray, data);
-	color = apply_ambient(color, data.amb);
+	// color = apply_ambient(color, data.amb);
 	return (color);
 	// return (color_add(color_mult(shade_color, amb_color), amb_color));
 }

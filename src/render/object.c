@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 20:42:04 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/23 21:07:55 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 float activte_dot(float dot, int type)
 {
+	
+	printf("dot: %f\n", dot);
 	if (type == PLANE)
 		return (dot);
 	return (fmaxf(dot, 0.0f));
@@ -21,12 +23,19 @@ float activte_dot(float dot, int type)
 
 t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint)
 {
+	t_vec center_to_hp;
+	t_vec proj_vec;
+	
 	if (obj.type == SPHERE)
 		return (vector_norm(vector_sub(hitpoint, obj.ori)));
 	if (obj.type == PLANE)
 		return (vector_norm(obj.normal_vec));
 	if (obj.type == CYLIN)
 	{
+		printf("cylin\n");
+		center_to_hp = vector_sub(hitpoint, obj.ori);
+		proj_vec = vector_scaler(vector_dot(center_to_hp, obj.normal_vec), vector_norm(obj.normal_vec));
+		return (vector_norm(vector_sub(center_to_hp, proj_vec)));
 		
 	}
 	return ((t_vec){0, 0, 0});
@@ -52,7 +61,6 @@ float get_dot_product(t_obj obj, t_light light, t_hit hit, t_data data)
 	tolight_ray.dir = hitpoint_to_light;
 
 	dot_p = activte_dot(dot_p, obj.type);
-
 	(void)data;
 	if (is_hit_object(tolight_ray, hit.index, data.obj, data))
 		return (0.0f);
@@ -93,8 +101,8 @@ t_bool is_hit_object(t_ray ray, unsigned int except, t_obj *obj, t_data data)
 		if (i != except && obj[i].type == PLANE && hit_plane(ray, obj[i]) > 0.0f)
 			return (True);
 			
-			// else if (i != except && obj[i].type == CYLIN && hit_cylinder(ray, obj[i]) > 0.0f)
-			// 	return (True);
+		else if (i != except && obj[i].type == CYLIN && hit_cylinder(ray, obj[i]) > 0.0f)
+			return (True);
 		i++;
 		// i++;	
 	}

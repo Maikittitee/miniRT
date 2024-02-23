@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:29:01 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 20:17:42 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/23 21:11:04 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ float	hit_cylinder(t_ray ray, t_obj cylin)
 
 	float a = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z ;
 	float b = 2 * (ray.ori.x * ray.dir.x + ray.ori.z * ray.dir.z);
-	float c = ray.ori.x * ray.ori.x + ray.ori.z * ray.ori.z -  (cylin.d * cylin.d * 0.25f * 0.25f);	
+	float c = ray.ori.x * ray.ori.x + ray.ori.z * ray.ori.z -  (cylin.d * cylin.d * 0.25f);	
 	float discriminant = b * b - 4 * a * c;
 	if (discriminant < 0)
 		return (-1.0f);
