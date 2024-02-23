@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 22:40:24 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/23 23:38:04 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,10 @@ t_hit hit_object(t_ray ray, t_obj *obj, t_data data)
 		else if (obj[i].type == PLANE)
 			closet_t = get_closet_t(hit_plane(ray, obj[i]), closet_t, &target_index, i);
 		else if (obj[i].type == CYLIN)
+		{
 			closet_t = get_closet_t(hit_cylinder(ray, obj[i]), closet_t, &target_index, i);
+			closet_t = get_closet_t(hit_disk(ray, obj[i]), closet_t, &target_index, i);
+		}
 		i++;	
 	}
 	if (target_index == -1 || closet_t < 0.0f) // not hit
