@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 23:54:41 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:51:07 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main()
 	// initial camera 	
 	cam.direction = (t_vec){0, 0, -1};
 	cam.fov = 70;
-	cam.origin = (t_vec){0, -10, 50};
+	cam.origin = (t_vec){0, 0, 50};
 
 	// initial viewport
 	init_viewport(&viewport, &cam);
@@ -40,7 +40,7 @@ int	main()
 	data.obj[0].type = CYLIN;
 	data.obj[0].color = (t_color){255, 0, 0, 255};
 	data.obj[0].ori = (t_vec){0, 0, 0};
-	data.obj[0].normal_vec = (t_vec){0, 3, 1};
+	data.obj[0].normal_vec = (t_vec){0, 1, 1};
 	data.obj[0].h = 10;
 	data.obj[0].d = 5;
 

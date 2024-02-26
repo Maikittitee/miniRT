@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:29:01 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 23:36:13 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:52:54 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,16 @@ float	hit_cylinder(t_ray ray, t_obj cylin)
 	t_vec oc = vector_sub(ray.ori, cylin.ori);
 	float a = vector_dot(ray.dir, ray.dir) - ft_pow2(vector_dot(ray.dir, cylin.normal_vec));
 	float b = 2 * (vector_dot(ray.dir, oc) - vector_dot(ray.dir, cylin.normal_vec) * vector_dot(oc, cylin.normal_vec));
-	float c = vector_dot(oc, oc) - ft_pow2(vector_dot(oc, cylin.normal_vec)) - ft_pow2(cylin.d / 2);
+	float c = vector_dot(oc, oc) - ft_pow2(vector_dot(oc, cylin.normal_vec)) - ft_pow2(cylin.d / 2.0f);
 	float discriminant = b * b - 4 * a * c;
 	if (discriminant < 0.0f)
 		return (-1.0f);
 	
 	printf("discriminant: %f\n", discriminant);
-	t = ((-1 * b - sqrt(discriminant)) / 2 * a);
-	
+	t = ((-1 * b - sqrt(discriminant)) / (2 * a));
+
+	// t = fminf(t, t2);
+		
 	float m = vector_dot(ray.dir, cylin.normal_vec) * t + vector_dot(oc, cylin.normal_vec);
 	if (fabsf(m) > cylin.h / 2)
 		return (-1.0f);
