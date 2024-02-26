@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:29:01 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/26 16:52:54 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:55:48 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ float	hit_cylinder(t_ray ray, t_obj cylin)
 	printf("discriminant: %f\n", discriminant);
 	t = ((-1 * b - sqrt(discriminant)) / (2 * a));
 
-	// t = fminf(t, t2);
 		
 	float m = vector_dot(ray.dir, cylin.normal_vec) * t + vector_dot(oc, cylin.normal_vec);
 	if (fabsf(m) > cylin.h / 2)
