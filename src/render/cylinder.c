@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:29:01 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/26 16:58:21 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:42:08 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ float	hit_cylinder(t_ray ray, t_obj cylin)
 	if (discriminant < 0.0f)
 		return (-1.0f);
 	
-	printf("discriminant: %f\n", discriminant);
+	// printf("discriminant: %f\n", discriminant);
 	t = ((-1 * b - sqrt(discriminant)) / (2 * a));
 
 		
@@ -78,5 +78,18 @@ float	hit_cylinder(t_ray ray, t_obj cylin)
 
 	
 	
+}
+
+t_bool is_cylin_disk(t_ray ray, t_obj obj)
+{
+	float t;
+
+	t = hit_cylinder(ray, obj);
+	if (t > 0.0f)
+		return (False);
+	t = hit_disk(ray, obj);
+	if (t > 0.0f)
+		return (True);
+	return (False);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 23:26:43 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:56:58 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,10 +179,11 @@ float	hit_sphere(t_ray ray, t_obj sphere);
 float hit_plane(t_ray ray, t_obj plane);
 float	hit_cylinder(t_ray ray, t_obj cylin);
 float	hit_disk(t_ray ray, t_obj cylin);
+t_bool is_cylin_disk(t_ray ray, t_obj obj);
 
-float activte_dot(float dot, int type);
-t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint);
-float get_dot_product(t_obj obj, t_light light, t_hit hit, t_data data);
+float activte_dot(float dot, int type, t_bool disk);
+t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint, t_ray ray);
+float get_dot_product(t_obj obj, t_light light, t_hit hit, t_data data, t_ray ray);
 t_color apply_ambient(t_color color, t_amb amb);
 
 

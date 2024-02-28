@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 00:41:21 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/23 20:59:13 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:25:50 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_color calculate_color(t_hit hit, t_ray ray, t_data data)
 {
 	ray.dir = vector_norm(ray.dir);
 
-	float dot = get_dot_product(data.obj[hit.index], data.light, hit, data);
+	float dot = get_dot_product(data.obj[hit.index], data.light, hit, data, ray);
 	// dot = 1;
 	// printf("dot: %f\n", dot);
 	return (color_scaler(dot * data.light.ratio, data.obj[hit.index].color));
