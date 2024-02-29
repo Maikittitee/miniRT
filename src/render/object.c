@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 21:42:49 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:03:35 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ t_hit	hit_object(t_ray ray, t_obj *obj, t_data data)
 	unsigned int	i;
 	float			min_t;
 	int				tar_i;
-	t_hit			hit;
 
 	i = 0;
 	min_t = VERYBIGNUMBER;

@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 21:57:52 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:21:04 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,11 +154,11 @@ typedef struct s_data{
 
 
 typedef struct s_disk{
+	float denom;
 	t_vec top;
 	t_vec buttom;
 	float tb;
 	float t;
-	float denom;
 	
 } t_disk;
 

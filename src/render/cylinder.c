@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:29:01 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 21:31:07 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:23:14 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ float	hit_disk(t_ray ray, t_obj cylin)
 	disk.top = vector_add(cylin.ori, \
 	vector_scaler(cylin.h / 2, cylin.normal_vec));
 	disk.buttom = vector_add(cylin.ori, \
-	vector_scaler(cylin.h / 2, cylin.normal_vec));
+	vector_scaler(cylin.h / -2, cylin.normal_vec));
 	disk.t = vector_dot(vector_sub(disk.top, ray.ori), \
 	cylin.normal_vec) / disk.denom;
 	disk.tb = vector_dot(vector_sub(disk.buttom, ray.ori), \
@@ -77,10 +77,14 @@ t_bool	is_cylin_disk(t_ray ray, t_obj obj)
 	float	t;
 
 	t = hit_cylinder(ray, obj);
+	printf("t: %f\n", t);
 	if (t > 0.0f)
 		return (False);
 	t = hit_disk(ray, obj);
 	if (t > 0.0f)
+	{
+		printf("hit_disk\n");
 		return (True);
+	}
 	return (False);
 }

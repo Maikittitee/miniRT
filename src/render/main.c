@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/28 20:57:56 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:05:09 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main()
 	data.viewport = viewport;
 
 	// light
-	light.ori = (t_vec){0,0  , 10};
+	light.ori = (t_vec){0, 0 , 10};
 	light.ratio = 1;
 	data.light = light;
 	
@@ -40,7 +40,7 @@ int	main()
 	data.obj[0].type = CYLIN;
 	data.obj[0].color = (t_color){255, 0, 0, 255};
 	data.obj[0].ori = (t_vec){0, 0, 0};
-	data.obj[0].normal_vec = (t_vec){0, 1, 1};
+	data.obj[0].normal_vec = (t_vec){0, 1, -1};
 	data.obj[0].h = 10;
 	data.obj[0].d = 5;
 

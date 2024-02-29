@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:35:34 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 22:00:25 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:09:39 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_dot	get_dot_product(t_obj obj, t_hit hit, t_data data, t_ray r)
 {
 	t_vec	obj_normal_vec;
 	t_vec	hitpoint_to_light;
-	t_ray	tolight_ray;
 	t_dot	dot;
 
 	obj_normal_vec = calculate_normal_vector(obj, hit.hitpoint, r);
@@ -38,6 +37,7 @@ t_dot	get_dot_product(t_obj obj, t_hit hit, t_data data, t_ray r)
 	if (obj.type == CYLIN && vector_dot(vector_norm(data.cam.direction), \
 	vector_norm(obj.normal_vec)) > 0.0f && is_cylin_disk(r, obj))
 	{
+		// printf("hereere\n");
 		dot.disk = True;
 		obj_normal_vec = vector_scaler(-1.0f, obj_normal_vec);
 		dot.dot = vector_dot(obj_normal_vec, hitpoint_to_light);

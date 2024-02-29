@@ -19,7 +19,8 @@ RENDER_FILE	:= main.c \
 				key.c\
 				amb.c\
 				cylinder.c\
-				math2.c
+				math2.c\
+				dot.c
 
 # PARSER_DIR = src/parser/
 
