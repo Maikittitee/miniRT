@@ -81,9 +81,3 @@ t_vec vector_scaler(float c, t_vec u)
 {
 	return ((t_vec){c * u.x, c * u.y, c * u.z});
 }
-
-void	print_vec(t_vec u)
-{
-	printf("<%f %f %f>\n", u.x, u.y, u.z);
-}
-
