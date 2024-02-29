@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 00:41:21 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/03/01 00:09:21 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 01:03:11 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ t_color	calculate_color(t_hit hit, t_ray ray, t_data data)
 	hitpoint_to_light = vector_norm(vector_sub(data.light.ori, hit.hitpoint));
 	d.dot = activte_dot(d.dot, data.obj[hit.index].type, d.disk);
 	tolight_ray.ori = hit.hitpoint;
-	printf("hp %f %f %f \n", hit.hitpoint.x, hit.hitpoint.y, hit.hitpoint.z);
+	// printf("hp %f %f %f \n", hit.hitpoint.x, hit.hitpoint.y, hit.hitpoint.z);
 	tolight_ray.dir = hitpoint_to_light; 
 	if (is_hit_object(tolight_ray, hit.index, data.obj, data))
 	{
-		return ((t_color){0, 0, 0, 255});
+		printf("obj index: %d\n", hit.index);
+		printf("tolight %f %f %f\n", tolight_ray.dir.x, tolight_ray.dir.y, tolight_ray.dir.z);
+		// return (t_color){255, 0, 0, 255};
+		d.dot = 0.0f;
 	}
 	return (color_scaler(d.dot * data.light.ratio, data.obj[hit.index].color));
 }

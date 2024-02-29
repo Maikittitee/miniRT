@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:35:34 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/03/01 00:06:49 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:54:54 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 float	activte_dot(float dot, int type, t_bool disk)
 {
 	if (type == PLANE || disk)
-		return (dot);
+		return (fabsf(dot));
 	return (fmaxf(dot, 0.0f));
 }
 

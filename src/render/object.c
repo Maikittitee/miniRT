@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 23:55:40 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 01:11:32 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ float	get_closet_t(float new_t, float old_t, int *target_index, int index)
 	return (new_t);
 }
 
+t_bool able_to_go_to_light(t_vec hitpoint, t_ray ray, t_data data, float t_to_obj)
+{
+	float t;
+	
+	t = vector_sub(data.light.ori, hitpoint);
+	if (t < t_to_obj)
+		return (True);
+	return (False)
+}
+
 t_bool	is_hit_object(t_ray ray, unsigned int except, t_obj *obj, t_data data)
 {
 	unsigned int	i;
@@ -57,7 +67,10 @@ t_bool	is_hit_object(t_ray ray, unsigned int except, t_obj *obj, t_data data)
 		if (i != except && obj[i].type == SPHERE && hit_sphere(ray, obj[i]) > 0.0f)
 			return (True);
 		if (i != except && obj[i].type == PLANE && hit_plane(ray, obj[i]) > 0.0f)
+		{
+			printf("obj %d bang\n", i);
 			return (True);
+		}
 		if (i != except && obj[i].type == CYLIN && (hit_cylinder(ray, obj[i]) > 0.0f || hit_disk(ray, obj[i])))
 			return (True);
 		i++;
@@ -91,7 +104,7 @@ t_hit	hit_object(t_ray ray, t_obj *obj, t_data data)
 	int				tar_i;
 
 	i = 0;
-	min_t = VERYBIGNUMBER;
+	min_t = 99999999.0f;
 	tar_i = -1;
 	while (i < data.nobj)
 	{

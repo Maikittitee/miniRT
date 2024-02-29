@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:33:15 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 21:34:15 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:16:20 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ t_vec	vector_norm(t_vec u)
 	float	size;
 
 	size = vector_size(u);
-	if (size == 1.0f)
-		return (u);
 	ret.x = u.x / size;
 	ret.y = u.y / size;
 	ret.z = u.z / size;
