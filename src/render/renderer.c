@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 17:44:40 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:01:45 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_ray	gen_ray(int x, int y, t_data *data)
 	t_vec	origin;
 	t_vec	target_px;
 
-	target_px = vector_add(data->viewport.upper_left_px, vector_scaler(x, data->viewport.step_x));
+	target_px = vector_add(data->viewport.upper_left_px, \
+	vector_scaler(x, data->viewport.step_x));
 	target_px = vector_add(target_px, vector_scaler(y, data->viewport.step_y));
 	origin = data->cam.origin;
 	dir = vector_sub(target_px, origin);

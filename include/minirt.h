@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 21:30:19 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 21:57:52 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,12 @@ typedef struct s_disk{
 	float t;
 	float denom;
 	
-} t_disk
+} t_disk;
+
+typedef struct s_dot{
+	float dot;
+	t_bool disk;
+} t_dot;
 
 
 
@@ -198,7 +203,7 @@ t_bool is_cylin_disk(t_ray ray, t_obj obj);
 
 float activte_dot(float dot, int type, t_bool disk);
 t_vec calculate_normal_vector(t_obj obj, t_vec hitpoint, t_ray ray);
-float get_dot_product(t_obj obj, t_light light, t_hit hit, t_data data, t_ray ray);
+t_dot get_dot_product(t_obj obj, t_hit hit, t_data data, t_ray ray);
 t_color apply_ambient(t_color color, t_amb amb);
 
 

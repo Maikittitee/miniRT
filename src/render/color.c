@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 00:41:21 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 17:19:19 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:00:00 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,15 @@ t_color	color_add(t_color c1, t_color c2)
 
 t_color	calculate_color(t_hit hit, t_ray ray, t_data data)
 {
-	float	dot;
+	t_dot	d;
+	t_vec	hitpoint_to_light;
+	t_ray	tolight_ray;
 
 	ray.dir = vector_norm(ray.dir);
-	dot = get_dot_product(data.obj[hit.index], data.light, hit, data, ray);
-	return (color_scaler(dot * data.light.ratio, data.obj[hit.index].color));
+	d = get_dot_product(data.obj[hit.index], hit, data, ray);
+	hitpoint_to_light = vector_norm(vector_sub(data.light.ori, hit.hitpoint));
+	d.dot = activte_dot(d.dot, data.obj[hit.index].type, d.disk);
+	if (is_hit_object(tolight_ray, hit.index, data.obj, data))
+		return ((t_color){0, 0, 0, 255});
+	return (color_scaler(d.dot * data.light.ratio, data.obj[hit.index].color));
 }
