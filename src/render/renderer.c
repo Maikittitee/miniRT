@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/03/01 01:00:50 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 01:37:49 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,8 @@ t_color	per_pixel(t_ray ray, t_obj *obj, t_data data)
 	if (!hit.is_hit)
 		return (background_color(ray));
 	unit_dir = vector_norm(ray.dir);
-	// printf("ray.ori %f %f %f\n", ray.ori.x, ray.ori.y, ray.ori.z);
-	// printf("unit %f %f %f\n", unit_dir.x, unit_dir.y, unit_dir.z);
-	// printf("t: %f\n", hit.t);
 	hit.hitpoint = vector_add(ray.ori, vector_scaler(hit.t, unit_dir));
-	// printf("first hp %f %f %f\n", hit.hitpoint.x, hit.hitpoint.y, hit.hitpoint.z);
 	color = calculate_color(hit, ray, data);
-	// color = apply_ambient(color, data.amb);
+	color = apply_ambient(color, data.amb);
 	return (color);
 }

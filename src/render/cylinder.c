@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:29:01 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 22:23:14 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 01:34:20 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ float	ft_pow2(float a)
 {
 	return (a * a);
 }
-
 
 float	hit_disk(t_ray ray, t_obj cylin)
 {

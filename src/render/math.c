@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:29:12 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 21:33:25 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 01:34:53 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,3 @@ float	vector_size(t_vec u)
 {
 	return (sqrt(u.x * u.x + u.y * u.y + u.z * u.z));
 }
-
-

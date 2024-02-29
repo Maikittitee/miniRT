@@ -6,32 +6,11 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/03/01 01:18:14 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/01 01:36:57 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
-
-t_vec	calculate_normal_vector(t_obj obj, t_vec hitpoint, t_ray ray)
-{
-	t_vec	center_to_hp;
-	t_vec	proj_vec;
-
-	if (obj.type == SPHERE)
-		return (vector_norm(vector_sub(hitpoint, obj.ori)));
-	if (obj.type == PLANE)
-		return (vector_norm(obj.normal_vec));
-	if (obj.type == CYLIN)
-	{
-		if (is_cylin_disk(ray, obj))
-			return (vector_norm(obj.normal_vec));
-		center_to_hp = vector_sub(hitpoint, obj.ori);
-		proj_vec = vector_scaler(vector_dot(center_to_hp, obj.normal_vec), \
-		vector_norm(obj.normal_vec));
-		return (vector_norm(vector_sub(center_to_hp, proj_vec)));
-	}
-	return ((t_vec){0, 0, 0});
-}
 
 float	get_closet_t(float new_t, float old_t, int *target_index, int index)
 {
@@ -47,9 +26,9 @@ float	get_closet_t(float new_t, float old_t, int *target_index, int index)
 	return (new_t);
 }
 
-t_bool can_go_light(t_ray ray, t_data data, float t_to_obj)
+t_bool	can_go_light(t_ray ray, t_data data, float t_to_obj)
 {
-	float t;
+	float	t;
 
 	if (t_to_obj < 0.0f)
 		return (True);
@@ -70,10 +49,10 @@ t_bool	is_hit_object(t_ray ray, unsigned int except, t_obj *obj, t_data data)
 		&& !can_go_light(ray, data, hit_sphere(ray, obj[i])))
 			return (True);
 		if (i != except && obj[i].type == PLANE \
-		&&  !can_go_light(ray, data, hit_plane(ray, obj[i])))
+		&& !can_go_light(ray, data, hit_plane(ray, obj[i])))
 			return (True);
 		if (i != except && obj[i].type == CYLIN \
-		&& (!can_go_light(ray, data, hit_cylinder(ray, obj[i]))|| \
+		&& (!can_go_light(ray, data, hit_cylinder(ray, obj[i])) || \
 		!can_go_light(ray, data, (hit_disk(ray, obj[i])))))
 			return (True);
 		i++;
