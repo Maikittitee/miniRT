@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/28 20:56:58 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:35:25 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # define WIN_HEIGHT 600
 # define ESC_KEY 53
 # define PI 3.14159265358979
-# define VERYSMALLNUMBER 0.001f 
+# define VERYSMALLNUMBER 0.001f
+# define VERYBIGNUMBER 2147483647
 # include "../lib/libft_gnl/libft.h"
 # include "../lib/mlx/mlx.h"
 # include <stdio.h>
