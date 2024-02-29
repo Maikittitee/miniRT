@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:30:36 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 22:03:35 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:55:40 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,11 @@ t_bool	is_hit_object(t_ray ray, unsigned int except, t_obj *obj, t_data data)
 	i = 0;
 	while (i < data.nobj)
 	{
-		if (i != except && obj[i].type == SPHERE && \
-		hit_sphere(ray, obj[i]) > 0.0f)
+		if (i != except && obj[i].type == SPHERE && hit_sphere(ray, obj[i]) > 0.0f)
 			return (True);
-		if (i != except && obj[i].type == PLANE && \
-		hit_plane(ray, obj[i]) > 0.0f)
+		if (i != except && obj[i].type == PLANE && hit_plane(ray, obj[i]) > 0.0f)
 			return (True);
-		else if (i != except && obj[i].type == CYLIN && \
-		(hit_cylinder(ray, obj[i]) > 0.0f || hit_disk(ray, obj[i])))
+		if (i != except && obj[i].type == CYLIN && (hit_cylinder(ray, obj[i]) > 0.0f || hit_disk(ray, obj[i])))
 			return (True);
 		i++;
 	}
