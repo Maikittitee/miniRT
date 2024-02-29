@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:29:12 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 17:30:41 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 21:33:25 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,4 @@ float	vector_size(t_vec u)
 	return (sqrt(u.x * u.x + u.y * u.y + u.z * u.z));
 }
 
-t_vec	vector_norm(t_vec u)
-{
-	t_vec	ret;
-	float	size;
 
-	size = vector_size(u);
-	ret.x = u.x / size;
-	ret.y = u.y / size;
-	ret.z = u.z / size;
-	return (ret);
-}
-
-t_vec	vector_div(t_vec u, t_vec v)
-{
-	return ((t_vec){u.x / v.x, u.y / v.y, u.z / v.z});
-}
-
-t_vec	vector_scaler(float c, t_vec u)
-{
-	return ((t_vec){c * u.x, c * u.y, c * u.z});
-}
