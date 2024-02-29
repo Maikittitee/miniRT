@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_util.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:54:25 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/23 18:35:14 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:13:19 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void	ft_print2d(char **str)
 
 void	ft_prt_cam(t_cam cam)
 {
-	printf("Camera\n");
-	printf("Vec_ori[i] : %f\n", cam.ori.i);
-	printf("Vec_ori[j] : %f\n", cam.ori.j);
-	printf("Vec_ori[k] : %f\n\n", cam.ori.k);
-	printf("Vec_norm[i] : %f\n", cam.normal_vec.i);
-	printf("Vec_norm[j] : %f\n", cam.normal_vec.j);
-	printf("Vec_norm[k] : %f\n\n", cam.normal_vec.k);
+	printf(GRN"Camera\n"RESET);
+	printf("Vec_origin[x] : %f\n", cam.origin.x);
+	printf("Vec_origin[y] : %f\n", cam.origin.y);
+	printf("Vec_origin[z] : %f\n\n", cam.origin.z);
+	printf("Vec_norm[x] : %f\n", cam.direction.x);
+	printf("Vec_norm[y] : %f\n", cam.direction.y);
+	printf("Vec_norm[z] : %f\n\n", cam.direction.z);
 	printf("FOV : %d\n", cam.fov);
 }
 
 void	ft_prt_amb(t_amb amb)
 {
-	printf("Ambient\n");
+	printf(GRN"Ambient\n"RESET);
 	printf("ratio : %f\n", amb.ratio);
 	printf("clr[r] : %d\n", amb.color.r);
 	printf("clr[g] : %d\n", amb.color.g);
@@ -45,9 +45,9 @@ void	ft_prt_amb(t_amb amb)
 
 void	ft_prt_light(t_light light)
 {
-	printf("Light\n");
-	printf("Vec_ori[i] : %f\n", light.ori.i);
-	printf("Vec_ori[j] : %f\n", light.ori.j);
-	printf("Vec_ori[k] : %f\n\n", light.ori.k);
+	printf(GRN"Light\n"RESET);
+	printf("Vec_ori[i] : %f\n", light.ori.x);
+	printf("Vec_ori[j] : %f\n", light.ori.y);
+	printf("Vec_ori[k] : %f\n\n", light.ori.z);
 	printf("ratio : %f\n", light.ratio);
 }

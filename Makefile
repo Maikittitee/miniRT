@@ -9,9 +9,18 @@ RENDER_DIR = src/render/
 
 RENDER_FILE	:= main.c \
 				renderer.c \
-				pnt.c \
 				math.c \
-				img.c
+				img.c \
+				viewport.c\
+				sphere.c\
+				color.c\
+				object.c\
+				plane.c\
+				key.c\
+				amb.c\
+				cylinder.c\
+				math2.c\
+				dot.c
 
 PARSER_DIR = src/parser/
 
@@ -48,16 +57,16 @@ FRAME_W	:= -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-# $(NAME): $(OBJS) $(MINILIBX) $(LIBFT)
-# 	$(CC) $(CFLAGS) $(OBJS) $(MINILIBX) -I$(LIBFT_DIR)\
-# 		-L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx $(FRAME_W) -o $(NAME)
+$(NAME): $(OBJS) $(MINILIBX) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(MINILIBX) -I$(LIBFT_DIR)\
+		-L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx $(FRAME_W) -o $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS)  -I$(LIBFT_DIR)\
-		-L$(LIBFT_DIR) -lft  -o $(NAME)
+# $(NAME): $(OBJS) $(LIBFT)
+# 	$(CC) $(CFLAGS) $(OBJS)  -I$(LIBFT_DIR)\
+# 		-L$(LIBFT_DIR) -lft  -o $(NAME)
 
-# $(MINILIBX):
-# 	$(MAKE) -C $(MLX_DIR)
+$(MINILIBX):
+	$(MAKE) -C $(MLX_DIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)

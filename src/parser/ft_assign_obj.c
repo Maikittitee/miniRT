@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_assign_obj.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 01:08:21 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/23 21:15:14 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:05:15 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_obj	ft_assign_cy(char **sp_line, int *state)
 {
 	t_obj	cy;
 
-	cy.type = CYLINDER;
+	cy.type = CYLIN;
 	cy.ori = ft_vector_coor(sp_line[1], state);
 	if (*state == -1)
 		return (cy);
@@ -87,7 +87,6 @@ int	ft_assign_obj(t_data *data, int *i, int *state)
 			data->obj[*i] = ft_assign_cy(data->ps.sp_line, state);
 		(*i)++;
 	}
-	// printf("state : %d\n", *state);
 	if (*state == -1)
 		return (-1);
 	return (0);
@@ -115,7 +114,6 @@ int	ft_assign(char *file, int *state, t_data *data)
 			ft_assign_obj(data, &i, state);
 			if (*state == -1)
 				*state = -1;
-			// printf("state[%d] : %d\n", i, *state);
 			ft_doublefree(data->ps.sp_line);
 		}
 		free (data->ps.line);

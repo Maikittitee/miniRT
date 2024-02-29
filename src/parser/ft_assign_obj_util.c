@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_assign_obj_util.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 01:08:21 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/23 21:15:07 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:05:50 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ t_cam	ft_assign_cam(char **sp_line, int *state)
 {
 	t_cam	cam;
 
-	cam.ori = ft_vector_coor(sp_line[1], state);
+	cam.origin = ft_vector_coor(sp_line[1], state);
 	if (*state == -1)
 		return (cam);
-	cam.normal_vec = ft_vector_norm(sp_line[2], state);
+	cam.direction = ft_vector_norm(sp_line[2], state);
 	if (*state == -1)
 		return (cam);
 	cam.fov = ft_atof(sp_line[3]);
@@ -57,4 +57,3 @@ t_amb	ft_assign_amb(char **sp_line, int *state)
 	a.color = ft_assign_clr(sp_line[2], state);
 	return (a);
 }
-

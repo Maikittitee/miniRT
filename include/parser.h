@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:50 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/23 21:47:22 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:12:23 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int				ft_checkobj(char *str);
 void			ft_print(void);
 void			ft_print2d(char **str);
 void			ft_prt_obj(t_data *data);
+void			ft_prt_cam(t_cam cam);
+void			ft_prt_amb(t_amb amb);
+void			ft_prt_light(t_light light);
 
 // ft_free.c
 void			ft_doublefree(char **str);
@@ -44,6 +47,7 @@ void			ft_doublefree(char **str);
 // ft_checkformat.c
 int				ft_checkformat(t_data *data, char *file, int *state);
 int				ft_check_amout_sp(char **sp, int nbr);
+int				ft_check_clr(char *str);
 
 // ft_format_obj.c
 int				ft_fmt_a(t_data *data);
@@ -59,7 +63,6 @@ int				ft_not(char *str, int mode);
 int				ft_not2(char *str, int mode);
 int				ft_count_char(char *str, char c);
 int				ft_notnbr(char *str);
-int				ft_check_clr(char *str);
 int				ft_check_vec(char *str);
 int				ft_check_float(char *str);
 

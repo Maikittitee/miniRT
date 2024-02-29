@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_format_obj.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 20:23:02 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/23 20:57:20 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:54:35 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_fmt_cy(t_data *data)
 {
-	// printf("ft_fmt_cy\n");
 	if (ft_cnt2d(data->ps.sp_line) != 6)
 		return (-1);
 	if (ft_check_float(data->ps.sp_line[2]) == -1)
@@ -29,7 +28,6 @@ int	ft_fmt_cy(t_data *data)
 
 int	ft_fmt_pl(t_data *data)
 {
-	// printf("ft_fmt_pl\n");
 	if (ft_cnt2d(data->ps.sp_line) != 4)
 		return (-1);
 	if (ft_check_float(data->ps.sp_line[1]) == -1)
@@ -43,7 +41,6 @@ int	ft_fmt_pl(t_data *data)
 
 int	ft_fmt_sp(t_data *data)
 {
-	// printf("ft_fmt_sp\n");
 	if (ft_cnt2d(data->ps.sp_line) != 4)
 		return (-1);
 	if (ft_check_float(data->ps.sp_line[1]) == -1)

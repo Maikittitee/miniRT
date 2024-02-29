@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checkfmt_util.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 20:43:26 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/23 18:47:25 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:55:08 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,21 +112,4 @@ int	ft_count_char(char *str, char c)
 		i++;
 	}
 	return (cnt);
-}
-
-int	ft_check_clr(char *str)
-{
-	char	**sp_clr;
-
-	sp_clr = ft_split(str, ',');
-	if (ft_cnt2d(sp_clr) != 3)
-		return (-1);
-	if (ft_notnbr(sp_clr[0]) == -1 || ft_notnbr(sp_clr[1]) == -1 \
-		|| ft_notnbr(sp_clr[2]) == -1)
-	{
-		ft_doublefree(sp_clr);
-		return (-1);
-	}
-	ft_doublefree(sp_clr);
-	return (0);
 }
