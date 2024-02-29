@@ -57,19 +57,15 @@ FRAME_W	:= -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MINILIBX) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(MINILIBX) -I$(LIBFT_DIR)\
-		-L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx $(FRAME_W) -o $(NAME)
-
-# $(NAME): $(OBJS) $(LIBFT)
-# 	$(CC) $(CFLAGS) $(OBJS)  -I$(LIBFT_DIR)\
-# 		-L$(LIBFT_DIR) -lft  -o $(NAME)
-
 $(MINILIBX):
 	$(MAKE) -C $(MLX_DIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+$(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(MINILIBX) -I$(LIBFT_DIR)\
+		-L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx $(FRAME_W) -o $(NAME)
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
