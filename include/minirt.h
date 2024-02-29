@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 03:41:23 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/02/29 17:35:25 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/02/29 21:30:19 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define VERYBIGNUMBER 2147483647
 # include "../lib/libft_gnl/libft.h"
 # include "../lib/mlx/mlx.h"
+# include "utils.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -148,6 +149,19 @@ typedef struct s_data{
 	void		*imgp;
 	unsigned int nobj;
 } t_data;
+
+// nrom
+
+
+typedef struct s_disk{
+	t_vec top;
+	t_vec buttom;
+	float tb;
+	float t;
+	float denom;
+	
+} t_disk
+
 
 
 t_bool render(t_data *data, t_img *img, char **buffer);
