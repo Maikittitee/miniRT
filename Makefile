@@ -1,7 +1,7 @@
 NAME	:= minirt
 
 CC	:= cc
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= 
 
 LIB_DIR	:= ./lib/
 

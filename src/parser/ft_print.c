@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:54:25 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/29 23:12:47 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:15:35 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ft_prt_obj(t_data *data)
 	ft_prt_light(data->light);
 	while (i < data->nobj)
 	{
-		printf("----%d----\n", i);
 		if (data->obj[i].type == SPHERE)
 			ft_prt_sp(&data->obj[i]);
 		else if (data->obj[i].type == CYLIN)

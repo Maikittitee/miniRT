@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/03/01 01:34:38 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:17:01 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int ac, char **av)
 	data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, \
 	&img.line_bytes, &img.endian);
+	printf("Rendering...\n");
 	render(&data, &img, &buffer);
 	mlx_put_image_to_window(mlx, data.winp, data.imgp, 0, 0);
 	mlx_hook(data.winp, 17, 0, close_win, &data);
