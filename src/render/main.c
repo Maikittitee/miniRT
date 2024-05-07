@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:07 by ktunchar          #+#    #+#             */
-/*   Updated: 2024/03/05 18:17:01 by ktunchar         ###   ########.fr       */
+/*   Updated: 2024/05/08 01:47:02 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_initdata(t_data *data)
 {
+	data->nobj = 0;
 	data->ps.fd = 0;
 	data->ps.len = 0;
 	data->ps.cnt_a = 0;

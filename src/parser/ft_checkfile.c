@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checkfile.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:21:00 by nkietwee          #+#    #+#             */
-/*   Updated: 2024/02/23 21:21:32 by nkietwee         ###   ########.fr       */
+/*   Updated: 2024/05/08 01:44:23 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	ft_checkfile(t_data *data, char *file)
 		return (-1);
 	if (ft_checkformat(data, file, &state) == -1 || state == -1)
 		return (-1);
+	printf("nonj %d\n", data->nobj);
 	data->obj = malloc(sizeof(t_obj) * data->nobj);
 	if (!data->obj)
 		return (0);
