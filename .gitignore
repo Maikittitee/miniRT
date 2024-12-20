@@ -1,2 +1,4 @@
-*/*.o
+./src/parser/*.o
+./src/render/*.o
+./lib/libft_gnl/*.o
 minirt
