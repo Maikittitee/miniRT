@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	data.viewport = viewport;
 	ft_prt_obj(&data);
 	mlx = mlx_init();
-	data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "pmew");
+	data.winp = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
 	data.imgp = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	buffer = mlx_get_data_addr(data.imgp, &img.pixel_bits, \
 	&img.line_bytes, &img.endian);
