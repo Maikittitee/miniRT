@@ -13,7 +13,7 @@ make
 ### One Sphere
 ![](images/one_sphere.png)
 
-### There Sphere 
+### Three Sphere 
 ![](images/three%20sphere%20with%20planes.png)
 
 ### Point light
